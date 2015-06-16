@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Neerpoints</string>
+    <string name="action_settings">Settings</string>
+    <string name="phone_hint">Enter your phone number</string>
+    <string name="phone_key">Enter your key</string>
+    <string name="login">Log In</string>
+    <string name="signup">Sign Up</string>
+    <string name="refresh">Refresh</string>
+    <string name="send_password_again">Send password again</string>
+    <string name="promotions">Promotions</string>
+    <string name="view_my_points">View my points</string>
+    <string name="resend_password">Resend password</string>
+    <string name="login_with_different_phone_number">Login with different phone number</string>
+    <string name="we_have_sent_you_a_password">We have sent you a password to your mobile phone. Please enter it here.</string>
+    <string name="password_sent">Password sent.</string>
+    <string name="welcome_to_neerpoints">Welcome to Neerpoints!</string>
+    <string name="required_points">required points</string>
+    <string name="points">points</string>
+
+    <color name="nice">#E0E0E0</color>
+</resources>

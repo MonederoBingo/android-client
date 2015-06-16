@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.neerpoints.activities.login.LoginActivity">
+    <item
+        android:id="@+id/action_login_resend_key"
+        android:orderInCategory="100"
+        android:title="@string/resend_password"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_login_with_different_phone_number"
+        android:orderInCategory="100"
+        android:title="@string/login_with_different_phone_number"
+        app:showAsAction="never" />
+</menu>

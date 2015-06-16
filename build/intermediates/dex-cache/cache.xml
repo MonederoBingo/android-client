@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/aayala/projects/neerpoints/Frontend_android/app/build/intermediates/exploded-aar/com.mcxiaoke.volley/library-aar/1.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e40b9a81989bd4a846018551c280f8c4d837bf2e">
+        <dex dex="/Users/aayala/projects/neerpoints/Frontend_android/app/build/intermediates/pre-dexed/debug/classes-bd5baeda7615cccc4b53c2fea4249aec1987f9f7.jar" />
+    </item>
+    <item
+        jar="/Users/aayala/projects/neerpoints/Frontend_android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/aayala/projects/neerpoints/Frontend_android/app/build/intermediates/pre-dexed/debug/classes-66ce7537b3d059c41e712790992917bf5249f110.jar" />
+    </item>
+    <item
+        jar="/Users/aayala/android/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/aayala/projects/neerpoints/Frontend_android/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-e972baf2eda817f80c2cd062f35b51dace73fd30.jar" />
+    </item>
+    <item
+        jar="/Users/aayala/projects/neerpoints/Frontend_android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/aayala/projects/neerpoints/Frontend_android/app/build/intermediates/pre-dexed/debug/classes-698e63dc38e6af8757ea93192ce74fb1ab405323.jar" />
+    </item>
+    <item
+        jar="/Users/aayala/projects/neerpoints/Frontend_android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/aayala/projects/neerpoints/Frontend_android/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-931d9f796abd8d93c2a2d06805316664026005d9.jar" />
+    </item>
+
+</items>
