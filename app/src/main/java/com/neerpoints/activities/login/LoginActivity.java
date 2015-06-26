@@ -76,7 +76,7 @@ public class LoginActivity extends ActionBarActivity {
         final Map<String, String> params = new HashMap<>();
         params.put("phone", tvLoginPhone.getText().toString());
         LoginApiAdapter apiAdapter = new LoginApiAdapter(this, LoginApiAdapter.CallTag.RESEND_CODE);
-        restClientImpl.callApi(Request.Method.POST, "client_users/resend_key", params, apiAdapter, this.getLocalClassName());
+        restClientImpl.callAuth(Request.Method.POST, "client/resend_key", params, apiAdapter, this.getLocalClassName());
     }
 
     private void loginWithDifferentPhoneNumber() {
@@ -91,7 +91,7 @@ public class LoginActivity extends ActionBarActivity {
         params.put("phone", tvLoginPhone.getText().toString());
         params.put("smsKey", etLoginSmsKey.getText().toString());
         LoginApiAdapter apiAdapter = new LoginApiAdapter(this, LoginApiAdapter.CallTag.LOGIN);
-        restClientImpl.callApi(Request.Method.POST, "client_users/login", params, apiAdapter, this);
+        restClientImpl.callAuth(Request.Method.POST, "client/login", params, apiAdapter, this);
     }
 
     @Override

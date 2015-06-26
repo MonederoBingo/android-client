@@ -20,6 +20,8 @@ public class AppController extends Application {
     private static final String COOKIE_KEY = "Cookie";
     private static final String SESSION_COOKIE = "JSESSIONID";
     private static final String SMS_KEY = "SmsKey";
+    private static final String API_KEY = "ApiKey";
+    private static final String USER_ID = "UserId";
     private static final String PHONE = "phone";
     private static AppController mInstance;
     private RequestQueue mRequestQueue;
@@ -122,6 +124,22 @@ public class AppController extends Application {
 
     public String getPhoneFromPreferences() {
         return getFromPreferences(PHONE);
+    }
+
+    public void putApiKeyInPreferences(String apiKey) {
+        putInPreferences(API_KEY, apiKey);
+    }
+
+    public String getApiKeyFromPreferences() {
+        return getFromPreferences(API_KEY);
+    }
+
+    public void putUserIdInPreferences(String userId) {
+        putInPreferences(USER_ID, userId);
+    }
+
+    public String getUserIdFromPreferences() {
+        return getFromPreferences(USER_ID);
     }
 
     private void putInPreferences(String key, String value) {

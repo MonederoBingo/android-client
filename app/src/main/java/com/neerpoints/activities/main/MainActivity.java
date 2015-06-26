@@ -51,7 +51,7 @@ public class MainActivity extends Activity {
             params.put("phone", phone);
             params.put("smsKey", smsKey);
             MainApiAdapter mainApiAdapter = new MainApiAdapter(this);
-            restClientImpl.callApi(Request.Method.POST, "client_users/login", params, mainApiAdapter, this.getLocalClassName());
+            restClientImpl.callAuth(Request.Method.POST, "client/login", params, mainApiAdapter, this.getLocalClassName());
         }
     }
 }

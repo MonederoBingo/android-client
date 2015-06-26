@@ -9,8 +9,10 @@ import java.util.Map;
 
 public class RestClientImpl implements RestClient {
     private static RestClientImpl restClientImpl = new RestClientImpl();
-//        private final String BASE_URL = "http://192.168.1.67:9090/api/";
-    private final String BASE_URL = "http://services-neerpoints.rhcloud.com/api/";
+//        private final String API_URL = "http://192.168.1.66:9090/api/";
+//        private final String AUTH_URL = "http://192.168.1.66:9090/auth/";
+    private final String API_URL = "http://services-neerpoints.rhcloud.com/api/";
+    private final String AUTH_URL = "http://services-neerpoints.rhcloud.com/auth/";
 
     private RestClientImpl() {
     }
@@ -22,9 +24,21 @@ public class RestClientImpl implements RestClient {
     @Override
     public void callApi(int method, String path, Map<String, String> params, final ApiListener apiListener, Object tag) {
         apiListener.startLoading();
-        String url = BASE_URL + path;
+        String url = API_URL + path;
         params = params == null ? new HashMap<String, String>() : params;
-        JsonObjectRequest req = new CustomJsonObjectRequest(method, url, null, apiListener, params);
+        AppController appController = AppController.getInstance();
+        String userId = appController.getUserIdFromPreferences();
+        String apiKey = appController.getApiKeyFromPreferences();
+        JsonObjectRequest req = new CustomJsonObjectRequest(method, url, null, apiListener, params, userId, apiKey);
+        appController.addToRequestQueue(req, tag);
+    }
+
+    @Override
+    public void callAuth(int method, String path, Map<String, String> params, final ApiListener apiListener, Object tag) {
+        apiListener.startLoading();
+        String url = AUTH_URL + path;
+        params = params == null ? new HashMap<String, String>() : params;
+        JsonObjectRequest req = new CustomJsonObjectRequest(method, url, null, apiListener, params, null, null);
         AppController.getInstance().addToRequestQueue(req, tag);
     }
 

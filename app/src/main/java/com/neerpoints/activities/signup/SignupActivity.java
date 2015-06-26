@@ -66,7 +66,7 @@ public class SignupActivity extends ActionBarActivity {
         Map<String, String> params = new HashMap<>();
         params.put("phone", etSignupPhone.getText().toString());
         SignupApiAdapter signupApiAdapter = new SignupApiAdapter(this);
-        restClientImpl.callApi(Request.Method.POST, "client_users/", params, signupApiAdapter, this);
+        restClientImpl.callAuth(Request.Method.POST, "client/", params, signupApiAdapter, this);
     }
 
     @Override

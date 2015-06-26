@@ -1,0 +1,7 @@
+# Android studio files #
+.idea/*
+
+*.iml
+
+build/
+*.apk
