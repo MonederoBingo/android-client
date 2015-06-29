@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class RestClientImpl implements RestClient {
     private static RestClientImpl restClientImpl = new RestClientImpl();
-//        private final String API_URL = "http://192.168.1.66:9090/api/";
-//        private final String AUTH_URL = "http://192.168.1.66:9090/auth/";
+//        private final String API_URL = "http://192.168.30.128:9090/api/";
+//        private final String AUTH_URL = "http://192.168.30.128:9090/auth/";
     private final String API_URL = "http://services-neerpoints.rhcloud.com/api/";
     private final String AUTH_URL = "http://services-neerpoints.rhcloud.com/auth/";
 
