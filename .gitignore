@@ -5,3 +5,7 @@
 
 build/
 *.apk
+local.properties
+.gradle/
+
+app/app-release.apk
