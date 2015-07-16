@@ -6,11 +6,12 @@ import android.widget.Toast;
 
 import com.neerpoints.activities.company.CompanyActivity;
 import com.neerpoints.app.AppController;
+import com.neerpoints.common.parsers.LoginResultParser;
 import com.neerpoints.model.LoginResult;
 import com.neerpoints.model.ServiceResult;
 import com.neerpoints.rest.ApiAdapter;
 
-import org.json.JSONObject;
+import org.json.JSONException;
 
 import java.util.Map;
 
@@ -35,7 +36,12 @@ public class LoginApiAdapter extends ApiAdapter {
                     AppController appController = AppController.getInstance();
                     appController.putPhoneInPreferences(requestParams.get("phone"));
                     appController.putSmsKeyInPreferences(requestParams.get("smsKey"));
-                    LoginResult loginData = getLoginData(serviceResult.getObject());
+                    LoginResult loginData = null;
+                    try {
+                        loginData = LoginResultParser.getLoginResult(serviceResult.getObject());
+                    } catch (JSONException e) {
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
                     appController.putUserIdInPreferences(loginData.getUserId());
                     appController.putApiKeyInPreferences(loginData.getApiKey());
                     Toast.makeText(context, getTranslation(R.string.welcome_to_neerpoints), Toast.LENGTH_LONG).show();
@@ -50,18 +56,6 @@ public class LoginApiAdapter extends ApiAdapter {
                 break;
         }
 
-    }
-
-    private LoginResult getLoginData(String object) {
-        try {
-            JSONObject jsonObject = new JSONObject(object);
-            String clientUserId = jsonObject.optString("clientUserId");
-            String apiKey = jsonObject.optString("apiKey");
-            return new LoginResult(clientUserId, apiKey);
-        } catch (Exception e) {
-            Toast.makeText(loginActivity, e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-        return new LoginResult("1", "");
     }
 
     @Override
