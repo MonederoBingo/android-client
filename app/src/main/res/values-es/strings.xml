@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Neerpoints</string>
+    <string name="app_name">Leal Points</string>
     <string name="action_settings">Configuraciones</string>
     <string name="phone_hint">Ingrese su número de teléfono</string>
     <string name="phone_key">Ingrese su clave</string>
@@ -14,7 +14,7 @@
     <string name="login_with_different_phone_number">Ingresar con otro número</string>
     <string name="we_have_sent_you_a_password">Te hemos enviado un SMS con tu clave. Si no recibe la clave dentro de una hora, favor de enviar un correo a neerpoints@gmail.com</string>
     <string name="password_sent">Clave enviada.</string>
-    <string name="welcome_to_neerpoints">Bienvenido a Neerpoints!</string>
+    <string name="welcome_to_neerpoints">Bienvenido a Leal Points!</string>
     <string name="required_points">puntos requeridos</string>
     <string name="points">puntos</string>
 </resources>
