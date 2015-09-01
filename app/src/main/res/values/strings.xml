@@ -12,9 +12,9 @@
     <string name="view_my_points">View my points</string>
     <string name="resend_password">Resend password</string>
     <string name="login_with_different_phone_number">Login with different phone number</string>
-    <string name="we_have_sent_you_a_password">We have sent you an SMS message with your password. If you do not receive that SMS within 1 hour, please email neerpoints@gmail.com</string>
+    <string name="we_have_sent_you_a_password">We have sent you an SMS message with your password. If you do not receive it within 1 hour, please email us to lealpoints@gmail.com</string>
     <string name="password_sent">Password sent.</string>
-    <string name="welcome_to_neerpoints">Welcome to Leal Points!</string>
+    <string name="welcome_to_lealpoints">Welcome to Leal Points!</string>
     <string name="required_points">required points</string>
     <string name="points">points</string>
 

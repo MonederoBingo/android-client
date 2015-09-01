@@ -5,16 +5,30 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "neerpoints.com.frontend_android"
+        applicationId "lealpoints.com.frontend_android"
         minSdkVersion 13
         targetSdkVersion 21
-        versionCode 17
+        versionCode 21
         versionName "1"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        def API_URL = "API_URL"
+
+        dev {
+            buildConfigField "String", API_URL, '"http://192.168.1.70:9090/"'
+        }
+        uat {
+            buildConfigField "String", API_URL, '"http://test.services.lealpoints.com/"'
+        }
+        prod {
+            buildConfigField "String", API_URL, '"http://services.lealpoints.com/"'
         }
     }
 }

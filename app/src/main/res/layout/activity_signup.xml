@@ -8,15 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.neerpoints.activities.signup.SignupActivity">
-
-    <ImageView
-        android:id="@+id/iv_signup_logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/logo" />
+    tools:context="com.lealpoints.activities.signup.SignupActivity">
 
     <ProgressBar
         android:id="@+id/pb_signup"

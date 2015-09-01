@@ -1,10 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.neerpoints.activities.company.CompanyActivity">
+    tools:context="com.lealpoints.activities.company.CompanyActivity">
     <item
         android:id="@+id/company_refresh"
         android:orderInCategory="100"
         android:title="@string/refresh"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 </menu>
