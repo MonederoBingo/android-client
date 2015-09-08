@@ -22,7 +22,7 @@
 
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/niv_company_promotion_list_image"
-            android:layout_width="120sp"
+            android:layout_width="160sp"
             android:layout_height="80sp"
             android:layout_gravity="center"
             android:scaleType="fitCenter"

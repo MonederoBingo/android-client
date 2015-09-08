@@ -1,5 +1,6 @@
 package com.lealpoints.activities.main;
 
+import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
@@ -7,6 +8,7 @@ import com.android.volley.VolleyError;
 import com.lealpoints.activities.company.CompanyActivity;
 import com.lealpoints.activities.login.LoginActivity;
 import com.lealpoints.app.AppController;
+import com.lealpoints.common.ActivityUtil;
 import com.lealpoints.common.parsers.LoginResultParser;
 import com.lealpoints.model.LoginResult;
 import com.lealpoints.model.ServiceResult;
@@ -18,8 +20,11 @@ import java.util.Map;
 
 public class MainApiAdapter extends ApiAdapter {
 
+    private final Context context;
+
     public MainApiAdapter(MainActivity mainActivity) {
         super(mainActivity);
+        context = mainActivity;
     }
 
     @Override
@@ -40,7 +45,6 @@ public class MainApiAdapter extends ApiAdapter {
     @Override
     public void onError(VolleyError volleyError) {
         super.onError(volleyError);
-        Intent intent = new Intent(context, LoginActivity.class);
-        context.startActivity(intent);
+        ActivityUtil.exit(context);
     }
 }

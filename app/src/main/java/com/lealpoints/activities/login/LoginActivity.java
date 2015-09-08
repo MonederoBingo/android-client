@@ -123,4 +123,9 @@ public class LoginActivity extends ActionBarActivity {
         restClientImpl.stopService(this);
         super.onStop();
     }
+
+    @Override
+    public void onBackPressed() {
+        ActivityUtil.exit(this);
+    }
 }

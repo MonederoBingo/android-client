@@ -6,7 +6,7 @@
 
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/niv_company_list_image"
-        android:layout_width="60dp"
+        android:layout_width="120dp"
         android:layout_height="60dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
@@ -26,14 +26,17 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:text="Title"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/item_description"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="bottom"
-            android:text="Description" />
+            android:gravity="right|bottom"
+            android:text="Description"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

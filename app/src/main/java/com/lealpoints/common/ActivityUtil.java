@@ -26,7 +26,7 @@ public class ActivityUtil {
                 LinearLayout.LayoutParams.WRAP_CONTENT));
     }
 
-    public static void goToMain(Context context) {
+    public static void exit(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("EXIT", true);

@@ -1,6 +1,5 @@
 package com.lealpoints.activities.company;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -9,7 +8,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.android.volley.Request;
-import com.lealpoints.activities.main.MainActivity;
 import com.lealpoints.app.AppController;
 import com.lealpoints.common.ActivityUtil;
 import com.lealpoints.rest.RestClient;
@@ -87,6 +85,6 @@ public class CompanyActivity extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
-        ActivityUtil.goToMain(this);
+        ActivityUtil.exit(this);
     }
 }

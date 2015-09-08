@@ -1,15 +1,11 @@
 package com.lealpoints.activities.signup;
 
-import android.app.ActionBar;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -83,6 +79,6 @@ public class SignupActivity extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
-        ActivityUtil.goToMain(this);
+        ActivityUtil.exit(this);
     }
 }
