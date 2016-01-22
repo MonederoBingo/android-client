@@ -66,7 +66,7 @@ public class SignupActivity extends ActionBarActivity {
     private void signup() {
         tvSignupMessage.setText("");
         Map<String, String> params = new HashMap<>();
-        params.put("phone", etSignupPhone.getText().toString());
+        params.put("phoneNumber", etSignupPhone.getText().toString());
         SignupApiAdapter signupApiAdapter = new SignupApiAdapter(this);
         restClientImpl.callAuth(Request.Method.POST, "client/", params, signupApiAdapter, this);
     }

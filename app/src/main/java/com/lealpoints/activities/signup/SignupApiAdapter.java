@@ -24,9 +24,9 @@ public class SignupApiAdapter extends ApiAdapter {
     public void onResponse(ServiceResult serviceResult, Map<String, String> requestParams) {
         if (serviceResult.isSuccess()) {
             AppController appController = AppController.getInstance();
-            appController.putPhoneInPreferences(requestParams.get("phone"));
+            appController.putPhoneInPreferences(requestParams.get("phoneNumber"));
             Intent intent = new Intent(signupActivity, LoginActivity.class);
-            intent.putExtra(SignupActivity.SIGNUP_PHONE, requestParams.get("phone"));
+            intent.putExtra(SignupActivity.SIGNUP_PHONE, requestParams.get("phoneNumber"));
             signupActivity.startActivity(intent);
         } else {
             signupActivity.getTvSignupMessage().setText(serviceResult.getMessage());

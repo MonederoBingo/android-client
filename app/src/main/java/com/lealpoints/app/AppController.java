@@ -21,7 +21,7 @@ public class AppController extends Application {
     private static final String SMS_KEY = "SmsKey";
     private static final String API_KEY = "ApiKey";
     private static final String USER_ID = "UserId";
-    private static final String PHONE = "phone";
+    private static final String PHONE = "phoneNumber";
     private static AppController mInstance;
     private RequestQueue mRequestQueue;
     private ImageLoader mImageLoader;

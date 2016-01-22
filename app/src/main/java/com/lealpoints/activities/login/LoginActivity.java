@@ -77,7 +77,7 @@ public class LoginActivity extends ActionBarActivity {
 
     private void resendKey() {
         final Map<String, String> params = new HashMap<>();
-        params.put("phone", tvLoginPhone.getText().toString());
+        params.put("phoneNumber", tvLoginPhone.getText().toString());
         LoginApiAdapter apiAdapter = new LoginApiAdapter(this, LoginApiAdapter.CallTag.RESEND_CODE);
         restClientImpl.callAuth(Request.Method.POST, "client/resend_key", params, apiAdapter, this.getLocalClassName());
     }
@@ -91,7 +91,7 @@ public class LoginActivity extends ActionBarActivity {
 
     private void login() {
         final Map<String, String> params = new HashMap<>();
-        params.put("phone", tvLoginPhone.getText().toString());
+        params.put("phoneNumber", tvLoginPhone.getText().toString());
         params.put("smsKey", etLoginSmsKey.getText().toString());
         LoginApiAdapter apiAdapter = new LoginApiAdapter(this, LoginApiAdapter.CallTag.LOGIN);
         restClientImpl.callAuth(Request.Method.POST, "client/login", params, apiAdapter, this);

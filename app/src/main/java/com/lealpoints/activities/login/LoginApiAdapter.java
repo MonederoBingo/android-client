@@ -34,7 +34,7 @@ public class LoginApiAdapter extends ApiAdapter {
             case LOGIN:
                 if (serviceResult.isSuccess()) {
                     AppController appController = AppController.getInstance();
-                    appController.putPhoneInPreferences(requestParams.get("phone"));
+                    appController.putPhoneInPreferences(requestParams.get("phoneNumber"));
                     appController.putSmsKeyInPreferences(requestParams.get("smsKey"));
                     LoginResult loginData = null;
                     try {
