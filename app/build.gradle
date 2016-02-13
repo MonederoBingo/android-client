@@ -8,7 +8,7 @@ android {
         applicationId "lealpoints.com.frontend_android"
         minSdkVersion 13
         targetSdkVersion 21
-        versionCode 24
+        versionCode 25
         versionName "1"
     }
     buildTypes {
@@ -22,13 +22,13 @@ android {
         def API_URL = "API_URL"
 
         dev {
-            buildConfigField "String", API_URL, '"http://192.168.0.11:9090/"'
+            buildConfigField "String", API_URL, '"http://192.168.0.10:9090/"'
         }
         uat {
-            buildConfigField "String", API_URL, '"http://test.services.lealpoints.com/"'
+            buildConfigField "String", API_URL, '"http://test.services.monederobingo.com/"'
         }
         prod {
-            buildConfigField "String", API_URL, '"http://services.lealpoints.com/"'
+            buildConfigField "String", API_URL, '"http://services.monederobingo.com/"'
         }
     }
 }
