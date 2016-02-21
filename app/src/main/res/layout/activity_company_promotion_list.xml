@@ -41,7 +41,7 @@
         android:id="@+id/activity_company_promotion_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.lealpoints.activities.company_promotion.CompanyPromotionActivity"/>
+        tools:context="com.monederobingo.activities.company_promotion.CompanyPromotionActivity"/>
     </LinearLayout>
 
     <ProgressBar

@@ -1,11 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            storeFile file('C:/cygwin/home/Alonso/projects/monederobingo/monederobingo-android-client/key.jks')
+        }
+    }
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
-
     defaultConfig {
-        applicationId "lealpoints.com.frontend_android"
+        applicationId "com.monederobingo.client"
         minSdkVersion 13
         targetSdkVersion 21
         versionCode 25
@@ -17,7 +21,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     productFlavors {
         def API_URL = "API_URL"
 
@@ -34,7 +37,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.mcxiaoke.volley:library-aar:1.0.0'
 }

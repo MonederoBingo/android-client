@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.lealpoints.activities.company.CompanyActivity">
+    tools:context="com.monederobingo.activities.company.CompanyActivity">
     <item
         android:id="@+id/company_refresh"
         android:orderInCategory="100"
