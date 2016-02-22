@@ -12,7 +12,7 @@ android {
         applicationId "com.monederobingo.client"
         minSdkVersion 13
         targetSdkVersion 21
-        versionCode 25
+        versionCode 1
         versionName "1"
     }
     buildTypes {
