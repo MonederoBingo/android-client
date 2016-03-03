@@ -1,5 +1,6 @@
 package com.monederobingo.activities.login;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -24,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class LoginActivity extends ActionBarActivity {
+public class LoginActivity extends Activity {
 
     Button bnLoginButton;
     private RestClient restClientImpl = RestClientImpl.getInstance();
@@ -36,8 +37,6 @@ public class LoginActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-        supportRequestWindowFeature(Window.FEATURE_PROGRESS);
         setContentView(R.layout.activity_login);
         initializeViews();
     }
@@ -71,8 +70,6 @@ public class LoginActivity extends ActionBarActivity {
         String phone = intent.getStringExtra(SignupActivity.SIGNUP_PHONE);
         tvLoginPhone.setText(phone);
         etLoginSmsKey.requestFocus();
-
-        ActivityUtil.setActionBarTitle(this);
     }
 
     private void resendKey() {

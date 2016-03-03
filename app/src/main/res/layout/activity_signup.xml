@@ -10,14 +10,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.monederobingo.activities.signup.SignupActivity">
 
-    <TextView
-        android:id="@+id/tv_signup_message"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:textColor="#FF0000"
-        android:textStyle="bold" />
+        android:id="@+id/imageView"
+        android:src="@drawable/logo"
+        android:contentDescription="@string/app_name"
+        android:layout_above="@+id/et_signup_phone"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/et_signup_phone"
@@ -39,6 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/blue_button"
+        android:textColor="@color/crema"
         android:text="@string/signup" />
 
     <ProgressBar
@@ -53,13 +54,13 @@
         android:layout_centerHorizontal="true"
         android:visibility="invisible"/>
 
-    <ImageView
+    <TextView
+        android:id="@+id/tv_signup_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/logo"
-        android:contentDescription="@string/app_name"
-        android:layout_above="@+id/et_signup_phone"
-        android:layout_centerHorizontal="true" />
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textColor="#FF0000"
+        android:textStyle="bold" />
 
 </RelativeLayout>

@@ -61,16 +61,12 @@ public class LoginApiAdapter extends ApiAdapter {
     public void startLoading() {
         loginActivity.getBnLoginButton().setEnabled(false);
         loginActivity.getProgressBar().setVisibility(View.VISIBLE);
-        loginActivity.setSupportProgressBarIndeterminateVisibility(true);
-        loginActivity.setSupportProgressBarVisibility(true);
     }
 
     @Override
     public void stopLoading() {
         loginActivity.getBnLoginButton().setEnabled(true);
         loginActivity.getProgressBar().setVisibility(View.INVISIBLE);
-        loginActivity.setSupportProgressBarIndeterminateVisibility(false);
-        loginActivity.setSupportProgressBarVisibility(false);
     }
 
     enum CallTag {

@@ -25,7 +25,7 @@ android {
         def API_URL = "API_URL"
 
         dev {
-            buildConfigField "String", API_URL, '"http://192.168.0.10:9090/"'
+            buildConfigField "String", API_URL, '"http://10.0.2.2:9090/"'
         }
         uat {
             buildConfigField "String", API_URL, '"http://test.services.monederobingo.com/"'

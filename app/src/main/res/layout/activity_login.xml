@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,30 +8,23 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.monederobingo.activities.login.LoginActivity">
+    tools:context="com.monederobingo.activities.signup.SignupActivity">
 
-    <ProgressBar
-        android:id="@+id/pb_login"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/tv_login_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:textColor="#FF0000"
-        android:textStyle="bold" />
+        android:id="@+id/imageView"
+        android:src="@drawable/logo"
+        android:contentDescription="@string/app_name"
+        android:layout_above="@+id/tv_login_phone"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/tv_login_phone"
+        android:layout_above="@+id/et_login_sms_key"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="@string/phone_hint"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#000000" />
@@ -44,35 +37,37 @@
         android:hint="@string/phone_key"
         android:inputType="number"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_above="@+id/bn_login_button"/>
 
     <Button
         android:id="@+id/bn_login_button"
-        android:layout_width="match_parent"
+        style="@style/button_text"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/blue_button"
-        android:text="@string/login"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tv_signup_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:text="@string/we_have_sent_you_a_password"
-        android:textColor="#0000FF"
-        android:textStyle="bold" />
+        android:textColor="@color/crema"
+        android:text="@string/login" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pb_login"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="false"
+        android:layout_marginBottom="100dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/tv_login_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:visibility="invisible" />
+        android:gravity="center"
+        android:textColor="#FF0000"
+        android:textStyle="bold" />
 
-</LinearLayout>
+</RelativeLayout>
