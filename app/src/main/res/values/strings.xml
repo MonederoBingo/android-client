@@ -19,4 +19,5 @@
     <string name="points">points</string>
 
     <color name="crema">#D9C499</color>
+    <color name="azul">#003462</color>
 </resources>

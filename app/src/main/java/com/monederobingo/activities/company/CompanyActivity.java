@@ -1,7 +1,7 @@
 package com.monederobingo.activities.company;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -14,7 +14,7 @@ import com.monederobingo.common.ActivityUtil;
 import com.monederobingo.rest.RestClient;
 import com.monederobingo.rest.RestClientImpl;
 
-public class CompanyActivity extends ActionBarActivity {
+public class CompanyActivity extends Activity {
 
     public static final String COMPANY_ID = "com.monederobingo.activities.company.companyId";
     public static final String COMPANY_NAME = "com.monederobingo.activities.company.companyName";
@@ -50,7 +50,6 @@ public class CompanyActivity extends ActionBarActivity {
         listViewAdapter = new CompanyListViewAdapter(this);
         mainListView.setAdapter(listViewAdapter);
         mainListView.setOnItemClickListener(listViewAdapter);
-        ActivityUtil.setActionBarTitle(this);
     }
 
     @Override

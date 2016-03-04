@@ -1,7 +1,7 @@
 package com.monederobingo.activities.company_promotion;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -18,7 +18,7 @@ import com.monederobingo.common.Constants;
 import com.monederobingo.rest.RestClient;
 import com.monederobingo.rest.RestClientImpl;
 
-public class CompanyPromotionActivity extends ActionBarActivity {
+public class CompanyPromotionActivity extends Activity {
 
     ProgressBar progressBar;
     private ListView mainListView;
@@ -58,7 +58,6 @@ public class CompanyPromotionActivity extends ActionBarActivity {
     private void initializeAdapters() {
         listViewAdapter = new CompanyPromotionListViewAdapter(this);
         mainListView.setAdapter(listViewAdapter);
-        ActivityUtil.setActionBarTitle(this);
     }
 
     private void getPromotionsFromApi() {
