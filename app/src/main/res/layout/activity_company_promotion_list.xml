@@ -5,6 +5,17 @@
     android:background="@color/crema"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="70dp"
+        android:id="@+id/imageView"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo"
+        android:contentDescription="@string/app_name"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
+
     <LinearLayout
         android:id="@+id/promotion_list_layout"
         android:layout_width="match_parent"
@@ -39,17 +50,6 @@
             android:textStyle="bold"
             android:textSize="18sp"
             />
-
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="70dp"
-            android:id="@+id/imageView"
-            android:scaleType="fitXY"
-            android:src="@drawable/logo"
-            android:contentDescription="@string/app_name"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
 
     <ListView
         android:id="@+id/activity_company_promotion_list"
