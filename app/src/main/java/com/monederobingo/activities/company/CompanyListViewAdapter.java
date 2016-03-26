@@ -79,7 +79,7 @@ public class CompanyListViewAdapter extends BaseAdapter implements AdapterView.O
     private void setImageName(ViewHolder viewHolder, int position) {
         Company company = companies.get(position);
         viewHolder.itemTitle.setText(company.getName());
-        viewHolder.itemDescription.setText(StringUtil.removeDecimals(company.getPoints()) + " "
+        viewHolder.itemDescription.setText(StringUtil.removeExtraDecimal(company.getPoints()) + " "
                 + companyActivity.getResources().getString(R.string.points));
     }
 

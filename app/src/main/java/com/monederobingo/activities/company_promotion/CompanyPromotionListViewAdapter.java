@@ -67,7 +67,7 @@ public class CompanyPromotionListViewAdapter extends BaseAdapter {
     private void setImageName(ViewHolder viewHolder, int position) {
         CompanyPromotion companyPromotion = promotions.get(position);
         viewHolder.itemDescription.setText(StringUtil.toUTF8String(companyPromotion.getDescription()));
-        viewHolder.itemRequiredPoints.setText(StringUtil.removeDecimals(companyPromotion.getRequiredPoints()) + " "
+        viewHolder.itemRequiredPoints.setText(StringUtil.removeExtraDecimal(companyPromotion.getRequiredPoints()) + " "
                 + companyPromotionActivity.getResources().getString(R.string.required_points));
     }
 

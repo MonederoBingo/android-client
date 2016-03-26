@@ -3,7 +3,7 @@ package com.monederobingo.util;
 import java.io.UnsupportedEncodingException;
 
 public class StringUtil {
-    public static String removeDecimals(double d) {
+    public static String removeExtraDecimal(double d) {
         if (d == (long) d)
             return String.format("%d", (long) d);
         else

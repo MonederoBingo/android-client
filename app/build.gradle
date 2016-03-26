@@ -1,25 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        config {
-            storeFile file('C:/cygwin/home/Alonso/projects/monederobingo/monederobingo-android-client/key.jks')
-        }
-    }
-    compileSdkVersion 21
+    compileSdkVersion 23
     buildToolsVersion "21.1.2"
     defaultConfig {
         applicationId "com.monederobingo.client"
-        minSdkVersion 13
-        targetSdkVersion 21
+        minSdkVersion 18
+        targetSdkVersion 23
         versionCode 1
         versionName "1"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     productFlavors {
         def API_URL = "API_URL"
@@ -38,6 +28,16 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:appcompat-v7:23.2.0'
     compile 'com.mcxiaoke.volley:library-aar:1.0.0'
+    testCompile 'junit:junit:4.12'
+    androidTestCompile 'org.mockito:mockito-core:1.10.19'
+    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+    androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.1'
+    androidTestCompile 'com.android.support:support-annotations:23.2.0'
+    androidTestCompile 'com.android.support.test:runner:0.4.1'
+    androidTestCompile 'com.android.support.test:rules:0.4.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+    androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
 }
