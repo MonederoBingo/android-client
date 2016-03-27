@@ -19,14 +19,20 @@ public class CustomJsonObjectRequest extends JsonObjectRequest {
     private final String apiKey;
     private final String userId;
 
-    public CustomJsonObjectRequest(int method, String url, JSONObject jsonRequest,
-                                   final ApiListener apiListener, Map<String, String> params,
-                                   String userId, String apiKey) {
+    private CustomJsonObjectRequest(int method, String url, JSONObject jsonRequest,
+                                    final ApiListener apiListener, Map<String, String> params,
+                                    String userId, String apiKey) {
         super(method, url, jsonRequest, new CustomResponseJsonObjectListener(apiListener, params),
                 new CustomResponseErrorListener(apiListener));
         this.params = params;
         this.apiKey = apiKey;
         this.userId = userId;
+    }
+
+    public static CustomJsonObjectRequest createRequest(int method, String url, JSONObject jsonRequest,
+                                                 final ApiListener apiListener, Map<String, String> params,
+                                                 String userId, String apiKey) {
+        return new CustomJsonObjectRequest(method, url, null, apiListener, params, userId, apiKey);
     }
 
     @Override
@@ -45,9 +51,6 @@ public class CustomJsonObjectRequest extends JsonObjectRequest {
         return super.parseNetworkResponse(response);
     }
 
-    /**
-     * Passing some request headers
-     */
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
         Map<String, String> headers = super.getHeaders();

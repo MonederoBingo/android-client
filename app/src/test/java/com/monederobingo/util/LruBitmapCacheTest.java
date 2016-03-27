@@ -2,6 +2,8 @@ package com.monederobingo.util;
 
 import android.graphics.Bitmap;
 
+import com.monederobingo.BaseUnitTest;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -12,15 +14,10 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
-public class LruBitmapCacheTest {
+public class LruBitmapCacheTest extends BaseUnitTest {
 
     @Mock
     Bitmap bitmap;
-
-    @Before
-    public void initMocks() {
-        MockitoAnnotations.initMocks(this);
-    }
 
     @Test
     public void getDefaultLruCacheSize_shouldReturnPositive() {
