@@ -24,14 +24,22 @@ public class CustomResponseJsonObjectListener implements Response.Listener<JSONO
 
     @Override
     public void onResponse(JSONObject jsonObject) {
-        Log.d(AppController.TAG, jsonObject.toString());
+        logResponse(jsonObject);
         try {
             apiListener.stopLoading();
             ServiceResult serviceResult = parseServiceResult(jsonObject);
             apiListener.onResponse(serviceResult, params);
         } catch (Exception e) {
-            VolleyLog.d(AppController.TAG, "Error: " + e.getMessage());
+            logException(e);
         }
+    }
+
+    void logResponse(JSONObject jsonObject) {
+        Log.d(AppController.TAG, jsonObject.toString());
+    }
+
+    void logException(Exception e) {
+        VolleyLog.d(AppController.TAG, "Error: " + e.getMessage());
     }
 
     private ServiceResult parseServiceResult(JSONObject jsonObject) {

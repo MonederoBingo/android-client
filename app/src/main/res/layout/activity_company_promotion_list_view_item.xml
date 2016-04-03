@@ -8,7 +8,9 @@
         android:id="@+id/item_info_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/border"
+        android:padding="10dip">
 
         <TextView
             android:id="@+id/company_promotion_description"
@@ -16,8 +18,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/azul"
             android:ellipsize="end"
-            android:singleLine="true"
-            android:text="Description"
+            android:singleLine="false"
+            android:text="COMPRA CON VALE HOY Y EMPIEZA A PAGAR HASTA EL ..."
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
@@ -26,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/azul"
-            android:gravity="bottom"
+            android:gravity="right"
             android:text="Required points" />
     </LinearLayout>
 
