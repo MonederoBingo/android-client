@@ -74,7 +74,7 @@ public class AppController extends Application {
      *
      * @param headers Response Headers.
      */
-    public final void checkSessionCookie(Map<String, String> headers) {
+    public void checkSessionCookie(Map<String, String> headers) {
         if (headers.containsKey(SET_COOKIE_KEY)
                 && headers.get(SET_COOKIE_KEY).startsWith(SESSION_COOKIE)) {
             String cookie = headers.get(SET_COOKIE_KEY);

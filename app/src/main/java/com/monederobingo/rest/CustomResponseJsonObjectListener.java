@@ -42,13 +42,11 @@ public class CustomResponseJsonObjectListener implements Response.Listener<JSONO
         VolleyLog.d(AppController.TAG, "Error: " + e.getMessage());
     }
 
-    private ServiceResult parseServiceResult(JSONObject jsonObject) {
+    ServiceResult parseServiceResult(JSONObject jsonObject) throws UnsupportedEncodingException {
         boolean isSuccess = jsonObject.optBoolean("success");
-        String message;
-        try {
-            message = new String(jsonObject.optString("message").getBytes("ISO-8859-1"), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            message = jsonObject.optString("message");
+        String message = jsonObject.optString("message");
+        if (message != null) {
+            message = new String(message.getBytes("ISO-8859-1"), "UTF-8");
         }
         String object = jsonObject.optString("object");
         return new ServiceResult(isSuccess, message, object);

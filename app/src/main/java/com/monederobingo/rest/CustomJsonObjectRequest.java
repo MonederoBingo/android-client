@@ -5,13 +5,9 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.monederobingo.app.AppController;
 
 import org.json.JSONObject;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class CustomJsonObjectRequest extends JsonObjectRequest {
@@ -37,36 +33,24 @@ public class CustomJsonObjectRequest extends JsonObjectRequest {
 
     @Override
     public byte[] getBody() {
-        if (params != null) {
-            JSONObject jsonObject = new JSONObject(params);
-            return jsonObject.toString().getBytes();
-        }
-        return "".getBytes();
+        return JsonObjectRequestUtil.getBytes(params);
     }
-
 
     @Override
     protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
-        AppController.getInstance().checkSessionCookie(response.headers);
-        return super.parseNetworkResponse(response);
+        return JsonObjectRequestUtil.getJsonObjectResponse(response, this);
     }
 
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
-        Map<String, String> headers = super.getHeaders();
-        if (headers == null
-                || headers.equals(Collections.emptyMap())) {
-            headers = new HashMap<>();
-        }
-        AppController.getInstance().addSessionCookie(headers);
-        String displayLanguage = Locale.getDefault().getLanguage();
-        headers.put("language", displayLanguage);
-        if (apiKey != null && !apiKey.isEmpty()) {
-            headers.put("Api-Key", apiKey);
-        }
-        if (userId != null && !userId.isEmpty()) {
-            headers.put("User-Id", userId);
-        }
-        return headers;
+        return JsonObjectRequestUtil.getHeaders(this, apiKey, userId);
+    }
+
+    Response<JSONObject> customParseNetworkResponse(NetworkResponse networkResponse) {
+        return super.parseNetworkResponse(networkResponse);
+    }
+
+    Map<String, String> customGetHeaders() throws AuthFailureError {
+        return super.getHeaders();
     }
 }
