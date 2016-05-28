@@ -14,6 +14,7 @@ public class CustomJsonObjectRequest extends JsonObjectRequest {
     private final Map<String, String> params;
     private final String apiKey;
     private final String userId;
+    private static final JsonObjectRequestUtil jsonObjectRequestUtil = new JsonObjectRequestUtil();
 
     private CustomJsonObjectRequest(int method, String url, JSONObject jsonRequest,
                                     final ApiListener apiListener, Map<String, String> params,
@@ -33,17 +34,17 @@ public class CustomJsonObjectRequest extends JsonObjectRequest {
 
     @Override
     public byte[] getBody() {
-        return JsonObjectRequestUtil.getBytes(params);
+        return jsonObjectRequestUtil.getBytes(params);
     }
 
     @Override
     protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
-        return JsonObjectRequestUtil.getJsonObjectResponse(response, this);
+        return jsonObjectRequestUtil.getJsonObjectResponse(response, this);
     }
 
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
-        return JsonObjectRequestUtil.getHeaders(this, apiKey, userId);
+        return jsonObjectRequestUtil.getHeaders(this, apiKey, userId);
     }
 
     Response<JSONObject> customParseNetworkResponse(NetworkResponse networkResponse) {

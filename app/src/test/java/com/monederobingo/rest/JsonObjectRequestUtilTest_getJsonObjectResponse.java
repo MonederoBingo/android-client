@@ -6,6 +6,7 @@ import com.monederobingo.app.AppController;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Matchers;
 import org.mockito.Mock;
 
@@ -21,16 +22,18 @@ public class JsonObjectRequestUtilTest_getJsonObjectResponse extends BaseUnitTes
     private CustomJsonObjectRequest jsonObjectRequest;
     @Mock
     private AppController appController;
+    @InjectMocks
+    private JsonObjectRequestUtil jsonObjectRequestUtil;
 
     @Before
     public void setUp() {
-        JsonObjectRequestUtil.setAppController(appController);
+        jsonObjectRequestUtil.setAppController(appController);
     }
 
     @Test
     public void shouldCheckSessionCookie() {
         //when
-        JsonObjectRequestUtil.getJsonObjectResponse(networkResponse, jsonObjectRequest);
+        jsonObjectRequestUtil.getJsonObjectResponse(networkResponse, jsonObjectRequest);
 
         //then
         verify(appController).checkSessionCookie(Matchers.<Map<String, String>>any());
@@ -39,7 +42,7 @@ public class JsonObjectRequestUtilTest_getJsonObjectResponse extends BaseUnitTes
     @Test
     public void shouldParseNetworkResponse() {
         //when
-        JsonObjectRequestUtil.getJsonObjectResponse(networkResponse, jsonObjectRequest);
+        jsonObjectRequestUtil.getJsonObjectResponse(networkResponse, jsonObjectRequest);
 
         //then
         verify(jsonObjectRequest).customParseNetworkResponse(Matchers.<NetworkResponse>any());

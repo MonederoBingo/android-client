@@ -14,10 +14,10 @@ import java.util.Map;
 
 public class JsonObjectRequestUtil {
 
-    private static AppController appController = AppController.getInstance();
-    private static JsonObjectFactory jsonObjectFactory = new JsonObjectFactory();
+    private AppController appController = AppController.getInstance();
+    private JsonObjectFactory jsonObjectFactory = new JsonObjectFactory();
 
-    static byte[] getBytes(Map<String, String> params) {
+    byte[] getBytes(Map<String, String> params) {
         if (params != null) {
             JSONObject jsonObject = jsonObjectFactory.createJsonObject(params);
             return jsonObject.toString().getBytes();
@@ -25,13 +25,13 @@ public class JsonObjectRequestUtil {
         return new byte[0];
     }
 
-    static Response<JSONObject> getJsonObjectResponse(NetworkResponse response,
+    Response<JSONObject> getJsonObjectResponse(NetworkResponse response,
                                                       CustomJsonObjectRequest jsonObjectRequest) {
         appController.checkSessionCookie(response.headers);
         return jsonObjectRequest.customParseNetworkResponse(response);
     }
 
-    static Map<String, String> getHeaders(CustomJsonObjectRequest customJsonObjectRequest,
+    Map<String, String> getHeaders(CustomJsonObjectRequest customJsonObjectRequest,
                                           String apiKey, String userId) throws AuthFailureError {
         Map<String, String> headers = customJsonObjectRequest.customGetHeaders();
         if (headers == null
@@ -50,11 +50,11 @@ public class JsonObjectRequestUtil {
         return headers;
     }
 
-    public static void setJsonObjectFactory(JsonObjectFactory jsonObjectFactory) {
-        JsonObjectRequestUtil.jsonObjectFactory = jsonObjectFactory;
+    public void setJsonObjectFactory(JsonObjectFactory jsonObjectFactory) {
+        this.jsonObjectFactory = jsonObjectFactory;
     }
 
-    public static void setAppController(AppController appController) {
-        JsonObjectRequestUtil.appController = appController;
+    public void setAppController(AppController appController) {
+        this.appController = appController;
     }
 }

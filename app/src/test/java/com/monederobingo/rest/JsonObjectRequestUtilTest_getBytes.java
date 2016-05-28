@@ -19,12 +19,12 @@ import static org.mockito.BDDMockito.given;
 
 public class JsonObjectRequestUtilTest_getBytes extends BaseUnitTest {
 
-    @InjectMocks
-    private final JsonObjectRequestUtil jsonObjectRequestUtil = new JsonObjectRequestUtil();
     @Mock
     private JsonObjectFactory jsonObjectFactory;
     @Mock
     private JSONObject jsonObject;
+    @InjectMocks
+    private final JsonObjectRequestUtil jsonObjectRequestUtil = new JsonObjectRequestUtil();
 
     @Before
     public void setUp(){
@@ -39,7 +39,7 @@ public class JsonObjectRequestUtilTest_getBytes extends BaseUnitTest {
         given(jsonObject.toString()).willReturn(str);
 
         //when
-        byte[] bytes = JsonObjectRequestUtil.getBytes(Collections.<String, String>emptyMap());
+        byte[] bytes = jsonObjectRequestUtil.getBytes(Collections.<String, String>emptyMap());
 
         //then
         assertTrue(Arrays.equals(str.getBytes(), bytes));
@@ -51,7 +51,7 @@ public class JsonObjectRequestUtilTest_getBytes extends BaseUnitTest {
         given(jsonObjectFactory.createJsonObject(Matchers.<Map<String, String>>any())).willReturn(jsonObject);
 
         //when
-        byte[] bytes = JsonObjectRequestUtil.getBytes(null);
+        byte[] bytes = jsonObjectRequestUtil.getBytes(null);
 
         //then
         assertEquals(0, bytes.length);
