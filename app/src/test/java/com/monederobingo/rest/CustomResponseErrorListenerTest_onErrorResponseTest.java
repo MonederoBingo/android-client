@@ -19,7 +19,7 @@ public class CustomResponseErrorListenerTest_onErrorResponseTest extends BaseUni
     private VolleyError volleyError;
 
     @Test
-    public void onErrorResponse_shouldThrowExceptionIfNullParameter() {
+    public void shouldThrowExceptionIfNullParameter() {
         try {
             //given
             CustomResponseErrorListener customResponseErrorListener = createCustomResponseErrorListener();
@@ -32,7 +32,7 @@ public class CustomResponseErrorListenerTest_onErrorResponseTest extends BaseUni
     }
 
     @Test
-    public void onErrorResponse_shouldCallApiListener() {
+    public void shouldCallApiListener() {
         //given
         CustomResponseErrorListener customResponseErrorListener = createCustomResponseErrorListener();
         //when

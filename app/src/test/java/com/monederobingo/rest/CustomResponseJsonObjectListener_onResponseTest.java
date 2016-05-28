@@ -29,7 +29,7 @@ public class CustomResponseJsonObjectListener_onResponseTest extends BaseUnitTes
     JSONObject jsonObject;
 
     @Test
-    public void onResponse_shouldCallApiListener() throws JSONException {
+    public void shouldCallApiListener() throws JSONException {
         //given
         CustomResponseJsonObjectListener jsonObjectListener = createCustomResponseJsonObjectListener(apiListener);
         when(jsonObject.optBoolean(anyString())).thenReturn(true);

@@ -44,6 +44,6 @@ public class MainApiAdapter extends ApiAdapter {
     @Override
     public void onError(VolleyError volleyError) {
         super.onError(volleyError);
-        ActivityUtil.exit(context);
+        new ActivityUtil(context).exit();
     }
 }

@@ -29,7 +29,7 @@ public class CustomResponseJsonObjectListener_parseServiceResultTest extends Bas
     JSONObject jsonObject;
 
     @Test
-    public void parseServiceResult_shouldReturnNonNullWhenEmptyData() throws UnsupportedEncodingException {
+    public void shouldReturnNonNullWhenEmptyData() throws UnsupportedEncodingException {
         //given
         CustomResponseJsonObjectListener jsonObjectListener = createCustomResponseJsonObjectListener(apiListener);
         //when
@@ -39,7 +39,7 @@ public class CustomResponseJsonObjectListener_parseServiceResultTest extends Bas
     }
 
     @Test
-    public void parseServiceResult_shouldParseIsSuccessWhenTrue() throws UnsupportedEncodingException {
+    public void shouldParseIsSuccessWhenTrue() throws UnsupportedEncodingException {
         //given
         CustomResponseJsonObjectListener jsonObjectListener = createCustomResponseJsonObjectListener(apiListener);
         when(jsonObject.optBoolean(anyString())).thenReturn(true);
@@ -50,7 +50,7 @@ public class CustomResponseJsonObjectListener_parseServiceResultTest extends Bas
     }
 
     @Test
-    public void parseServiceResult_ShouldParseIsSuccessWhenFalse() throws UnsupportedEncodingException {
+    public void shouldParseIsSuccessWhenFalse() throws UnsupportedEncodingException {
         //given
         CustomResponseJsonObjectListener jsonObjectListener = createCustomResponseJsonObjectListener(apiListener);
         when(jsonObject.optBoolean(anyString())).thenReturn(false);
@@ -61,7 +61,7 @@ public class CustomResponseJsonObjectListener_parseServiceResultTest extends Bas
     }
 
     @Test
-    public void parseServiceResult_shouldParseMessage() throws UnsupportedEncodingException {
+    public void shouldParseMessage() throws UnsupportedEncodingException {
         //given
         CustomResponseJsonObjectListener jsonObjectListener = createCustomResponseJsonObjectListener(apiListener);
         when(jsonObject.optString(anyString())).thenReturn("parsedMessage");
@@ -72,7 +72,7 @@ public class CustomResponseJsonObjectListener_parseServiceResultTest extends Bas
     }
 
     @Test
-    public void parseServiceResult_shouldParseObject() throws UnsupportedEncodingException {
+    public void shouldParseObject() throws UnsupportedEncodingException {
         //given
         CustomResponseJsonObjectListener jsonObjectListener = createCustomResponseJsonObjectListener(apiListener);
         when(jsonObject.optString(anyString())).thenReturn("parsedObject");

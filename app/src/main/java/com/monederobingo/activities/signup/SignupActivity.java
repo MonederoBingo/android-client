@@ -77,6 +77,6 @@ public class SignupActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        ActivityUtil.exit(this);
+        new ActivityUtil(this).exit();
     }
 }
