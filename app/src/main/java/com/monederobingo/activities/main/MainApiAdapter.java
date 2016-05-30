@@ -9,6 +9,7 @@ import com.monederobingo.activities.company.CompanyActivity;
 import com.monederobingo.app.AppController;
 import com.monederobingo.common.ActivityUtil;
 import com.monederobingo.common.parsers.LoginResultParser;
+import com.monederobingo.factories.JSONObjectFactory;
 import com.monederobingo.model.LoginResult;
 import com.monederobingo.model.ServiceResult;
 import com.monederobingo.rest.ApiAdapter;
@@ -30,7 +31,8 @@ public class MainApiAdapter extends ApiAdapter {
     public void onResponse(ServiceResult serviceResult, Map<String, String> requestParams) {
         LoginResult loginData = null;
         try {
-            loginData = LoginResultParser.getLoginResult(serviceResult.getObject());
+            LoginResultParser loginResultParser = new LoginResultParser(new JSONObjectFactory());
+            loginData = loginResultParser.getLoginResult(serviceResult.getObject());
         } catch (JSONException e) {
             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
         }
