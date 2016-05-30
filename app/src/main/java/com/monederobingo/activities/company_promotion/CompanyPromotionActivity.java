@@ -51,7 +51,7 @@ public class CompanyPromotionActivity extends Activity {
         companyName.setText(getIntent().getStringExtra(CompanyActivity.COMPANY_NAME));
 
         NetworkImageView logo = (NetworkImageView) findViewById(R.id.niv_company_promotion_list_image);
-        String url = BuildConfig.API_URL + Constants.IMAGE_URL + getIntent().getStringExtra(CompanyActivity.COMPANY_LOGO);
+        String url = BuildConfig.API_URL + Constants.Web.IMAGE_URL + getIntent().getStringExtra(CompanyActivity.COMPANY_LOGO);
         logo.setImageUrl(url, AppController.getInstance().getImageLoader());
     }
 

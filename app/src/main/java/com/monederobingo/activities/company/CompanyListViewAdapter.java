@@ -84,7 +84,7 @@ public class CompanyListViewAdapter extends BaseAdapter implements AdapterView.O
     }
 
     private void setImageOnView(final ViewHolder viewHolder, int position) {
-        String url = BuildConfig.API_URL + Constants.IMAGE_URL + companies.get(position).getCompanyId();
+        String url = BuildConfig.API_URL + Constants.Web.IMAGE_URL + companies.get(position).getCompanyId();
         viewHolder.itemThumbnail.setImageUrl(url, AppController.getInstance().getImageLoader());
     }
 
