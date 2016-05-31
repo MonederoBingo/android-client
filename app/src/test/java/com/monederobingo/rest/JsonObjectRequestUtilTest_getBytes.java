@@ -1,13 +1,13 @@
 package com.monederobingo.rest;
 
-import com.monederobingo.BaseUnitTest;
-
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Matchers;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,7 +17,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.BDDMockito.given;
 
-public class JsonObjectRequestUtilTest_getBytes extends BaseUnitTest {
+@RunWith(MockitoJUnitRunner.class)
+public class JsonObjectRequestUtilTest_getBytes {
 
     @Mock
     private JsonObjectFactory jsonObjectFactory;

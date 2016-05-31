@@ -3,16 +3,17 @@ package com.monederobingo.common;
 import android.content.Context;
 import android.content.Intent;
 
-import com.monederobingo.BaseUnitTest;
-
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Mockito.verify;
 
-public class ActivityUtilTest_exit extends BaseUnitTest {
+@RunWith(MockitoJUnitRunner.class)
+public class ActivityUtilTest_exit {
 
     @Mock
     private Context context;

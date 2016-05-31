@@ -2,19 +2,18 @@ package com.monederobingo.util;
 
 import android.graphics.Bitmap;
 
-import com.monederobingo.BaseUnitTest;
-
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
-public class LruBitmapCacheTest extends BaseUnitTest {
+@RunWith(MockitoJUnitRunner.class)
+public class LruBitmapCacheTest {
 
     @Mock
     Bitmap bitmap;

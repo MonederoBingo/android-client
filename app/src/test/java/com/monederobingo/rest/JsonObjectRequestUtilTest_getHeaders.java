@@ -1,23 +1,23 @@
 package com.monederobingo.rest;
 
 import com.android.volley.AuthFailureError;
-import com.monederobingo.BaseUnitTest;
 import com.monederobingo.app.AppController;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Matchers;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Map;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 
-public class JsonObjectRequestUtilTest_getHeaders extends BaseUnitTest {
+@RunWith(MockitoJUnitRunner.class)
+public class JsonObjectRequestUtilTest_getHeaders {
 
     @Mock
     private CustomJsonObjectRequest customObjectRequest;

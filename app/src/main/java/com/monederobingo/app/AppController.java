@@ -72,11 +72,16 @@ public class AppController extends Application {
     }
 
     public <T> void addToRequestQueue(Request<T> req, Object tag) {
-        // set the default tag if tag is empty
         req.setTag(tag == null ? TAG : tag);
-        req.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        req.setRetryPolicy(getRetryPolicy());
         getRequestQueue().add(req);
+    }
+
+    @NonNull
+    @OverridingInTests
+    DefaultRetryPolicy getRetryPolicy() {
+        return new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
     }
 
     public void cancelPendingRequests(Object tag) {
@@ -85,12 +90,6 @@ public class AppController extends Application {
         }
     }
 
-    /**
-     * Checks the response headers for session cookie and saves it
-     * if it finds it.
-     *
-     * @param headers Response Headers.
-     */
     public void checkSessionCookie(Map<String, String> headers) {
         if (headers.containsKey(Constants.Web.SET_COOKIE_KEY)
                 && headers.get(Constants.Web.SET_COOKIE_KEY).startsWith(Constants.Web.SESSION_COOKIE)) {

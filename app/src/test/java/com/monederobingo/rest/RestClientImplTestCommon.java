@@ -2,21 +2,16 @@ package com.monederobingo.rest;
 
 import android.support.annotation.NonNull;
 
-import com.android.volley.Request;
-import com.monederobingo.BaseUnitTest;
 import com.monederobingo.app.AppController;
 
-import org.junit.Test;
-import org.mockito.Matchers;
-import org.mockito.Mock;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.HashMap;
 import java.util.Map;
 
-import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.verify;
 
-public class RestClientImplTestCommon extends BaseUnitTest {
+public class RestClientImplTestCommon {
 
     static RestClientImpl createRestClientImpl(AppController appController,
                                                        final CustomJsonObjectRequest customJsonObjectRequest) {

@@ -6,15 +6,12 @@ import android.support.annotation.NonNull;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.verify;
 
 public class AppControllerTest_onCreate {
 
     private boolean callOnCreateInSuperCalled = false;
     private boolean getDefaultSharedPreferencesCalled = false;
-    private SharedPreferences sharedPreferences;
 
     @Test
     public void shouldCallOnCreateInSuper() throws Exception {
@@ -58,7 +55,7 @@ public class AppControllerTest_onCreate {
             @Override
             SharedPreferences getDefaultSharedPreferences() {
                 getDefaultSharedPreferencesCalled = true;
-                return sharedPreferences;
+                return null;
             }
         };
     }

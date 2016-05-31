@@ -2,14 +2,15 @@ package com.monederobingo.rest;
 
 import android.support.annotation.NonNull;
 
-import com.monederobingo.BaseUnitTest;
 import com.monederobingo.model.ServiceResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Matchers;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,8 +20,8 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-
-public class CustomResponseJsonObjectListener_onResponseTest extends BaseUnitTest {
+@RunWith(MockitoJUnitRunner.class)
+public class CustomResponseJsonObjectListener_onResponseTest {
 
     @Mock
     ApiListener apiListener;

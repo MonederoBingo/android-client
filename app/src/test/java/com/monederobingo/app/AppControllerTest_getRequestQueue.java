@@ -5,11 +5,15 @@ import android.support.annotation.NonNull;
 import com.android.volley.RequestQueue;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+@RunWith(MockitoJUnitRunner.class)
 public class AppControllerTest_getRequestQueue {
 
     private boolean createVolleyRequestQueueCalled = false;
@@ -33,7 +37,7 @@ public class AppControllerTest_getRequestQueue {
         //when
         RequestQueue requestQueue = appController.getRequestQueue();
         //then
-        assertNull(requestQueue);
+        assertNotNull(requestQueue);
     }
 
     @NonNull

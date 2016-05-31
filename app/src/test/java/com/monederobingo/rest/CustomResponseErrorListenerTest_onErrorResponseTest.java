@@ -3,15 +3,17 @@ package com.monederobingo.rest;
 import android.support.annotation.NonNull;
 
 import com.android.volley.VolleyError;
-import com.monederobingo.BaseUnitTest;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 
-public class CustomResponseErrorListenerTest_onErrorResponseTest extends BaseUnitTest {
+@RunWith(MockitoJUnitRunner.class)
+public class CustomResponseErrorListenerTest_onErrorResponseTest {
 
     @Mock
     ApiListener apiListener;

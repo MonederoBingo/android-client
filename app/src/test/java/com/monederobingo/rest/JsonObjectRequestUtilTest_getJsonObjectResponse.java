@@ -1,20 +1,22 @@
 package com.monederobingo.rest;
 
 import com.android.volley.NetworkResponse;
-import com.monederobingo.BaseUnitTest;
 import com.monederobingo.app.AppController;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Matchers;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Map;
 
 import static org.mockito.Mockito.verify;
 
-public class JsonObjectRequestUtilTest_getJsonObjectResponse extends BaseUnitTest {
+@RunWith(MockitoJUnitRunner.class)
+public class JsonObjectRequestUtilTest_getJsonObjectResponse {
 
     @Mock
     private NetworkResponse networkResponse;

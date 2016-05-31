@@ -1,19 +1,21 @@
 package com.monederobingo.common.parsers;
 
-import com.monederobingo.BaseUnitTest;
 import com.monederobingo.factories.JSONObjectFactory;
 import com.monederobingo.model.LoginResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.anyString;
 
-public class LoginResultParserTest_getLoginResult extends BaseUnitTest{
+@RunWith(MockitoJUnitRunner.class)
+public class LoginResultParserTest_getLoginResult {
 
     @Mock
     private JSONObjectFactory jsonObjectFactory;
