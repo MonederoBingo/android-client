@@ -33,17 +33,17 @@ public class AppController extends Application {
         preferences = getDefaultSharedPreferences();
     }
 
-    @OverridingInTests
+    @NotTestable
     void callOnCreateInSuper() {
         super.onCreate();
     }
 
-    @OverridingInTests
+    @NotTestable
     SharedPreferences getDefaultSharedPreferences() {
         return PreferenceManager.getDefaultSharedPreferences(this);
     }
 
-    @OverridingInTests
+    @NotTestable
     public RequestQueue getRequestQueue() {
         if (requestQueue == null) {
             requestQueue = createVolleyRequestQueue();
@@ -52,7 +52,7 @@ public class AppController extends Application {
     }
 
     @NonNull
-    @OverridingInTests
+    @NotTestable
     RequestQueue createVolleyRequestQueue() {
         return Volley.newRequestQueue(getApplicationContext());
     }
@@ -66,7 +66,7 @@ public class AppController extends Application {
     }
 
     @NonNull
-    @OverridingInTests
+    @NotTestable
     ImageLoader createImageLoader() {
         return new ImageLoader(this.requestQueue, new LruBitmapCache());
     }
@@ -78,7 +78,7 @@ public class AppController extends Application {
     }
 
     @NonNull
-    @OverridingInTests
+    @NotTestable
     DefaultRetryPolicy getRetryPolicy() {
         return new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);

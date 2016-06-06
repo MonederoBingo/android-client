@@ -29,14 +29,8 @@ public class SignupActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-//        supportRequestWindowFeature(Window.FEATURE_PROGRESS);
         setContentView(R.layout.activity_signup);
         initializeViews();
-    }
-
-    public TextView getTvSignupMessage() {
-        return tvSignupMessage;
     }
 
     public ProgressBar getProgressBar() {
@@ -45,6 +39,10 @@ public class SignupActivity extends Activity {
 
     public Button getBnSignupButton() {
         return bnSignupButton;
+    }
+
+    public void setTextToTvSignupMessage(String message) {
+        tvSignupMessage.setText(message);
     }
 
     private void initializeViews() {
@@ -58,7 +56,6 @@ public class SignupActivity extends Activity {
                 signUp();
             }
         });
-        //ActivityUtil.setActionBarTitle(this);
     }
 
     private void signUp() {
