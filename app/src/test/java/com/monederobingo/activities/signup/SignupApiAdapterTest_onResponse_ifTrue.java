@@ -38,12 +38,12 @@ public class SignupApiAdapterTest_onResponse_ifTrue {
     @Before
     public void setUp() {
         given(serviceResult.isSuccess()).willReturn(true);
-        signupApiAdapter = createSignupAdapter();
+        initializeClassToTest();
         signupApiAdapter.setAppController(appController);
     }
 
-    private SignupApiAdapter createSignupAdapter() {
-        return new SignupApiAdapter(signupActivity) {
+    private void initializeClassToTest() {
+        signupApiAdapter = new SignupApiAdapter(signupActivity) {
             @NonNull
             @Override
             Intent getIntent() {
@@ -58,30 +58,27 @@ public class SignupApiAdapterTest_onResponse_ifTrue {
     }
 
     @Test
-    public void shouldPutPhoneInPreferences() throws Exception {
+    public void methodSpecification() throws Exception {
         //given
         requestParams.put("phoneNumber", "1234567890");
-        //when
-        signupApiAdapter.onResponse(serviceResult, requestParams);
-        //then
-        verify(appController).putPhoneInPreferences("1234567890");
-    }
-
-    @Test
-    public void shouldCallStartSignupActivity() throws Exception {
-        //when
-        signupApiAdapter.onResponse(serviceResult, requestParams);
-        //then
-        assertTrue(startSignupAcitivityCalled);
-    }
-
-    @Test
-    public void shouldNotSetTextToTvSignupMessage() throws Exception {
-        //given
         given(serviceResult.getMessage()).willReturn("message");
         //when
         signupApiAdapter.onResponse(serviceResult, requestParams);
         //then
+        shouldPutPhoneInPreferences();
+        shouldCallStartSignupActivity();
+        shouldNotSetTextToTvSignupMessage();
+    }
+
+    private void shouldPutPhoneInPreferences() {
+        verify(appController).putPhoneInPreferences("1234567890");
+    }
+
+    private void shouldCallStartSignupActivity() {
+        assertTrue(startSignupAcitivityCalled);
+    }
+
+    public void shouldNotSetTextToTvSignupMessage() {
         verify(signupActivity, never()).setTextToTvSignupMessage("message");
     }
 }

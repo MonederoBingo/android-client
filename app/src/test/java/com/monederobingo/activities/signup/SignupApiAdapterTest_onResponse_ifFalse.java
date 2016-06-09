@@ -33,10 +33,11 @@ public class SignupApiAdapterTest_onResponse_ifFalse {
     private Intent intent;
     private Map<String, String> requestParams = new HashMap<>();
     private SignupApiAdapter signupApiAdapter;
-    private boolean startSignupAcitivityCalled = false;
+    private boolean startSignupActivityCalled;
 
     @Before
     public void setUp() {
+        startSignupActivityCalled = false;
         given(serviceResult.isSuccess()).willReturn(false);
         signupApiAdapter = createSignupAdapter();
         signupApiAdapter.setAppController(appController);
@@ -52,7 +53,7 @@ public class SignupApiAdapterTest_onResponse_ifFalse {
 
             @Override
             void startSignupActivity(Map<String, String> requestParams) {
-                startSignupAcitivityCalled = true;
+                startSignupActivityCalled = true;
             }
         };
     }
@@ -72,7 +73,7 @@ public class SignupApiAdapterTest_onResponse_ifFalse {
         //when
         signupApiAdapter.onResponse(serviceResult, requestParams);
         //then
-        assertFalse(startSignupAcitivityCalled);
+        assertFalse(startSignupActivityCalled);
     }
 
     @Test
