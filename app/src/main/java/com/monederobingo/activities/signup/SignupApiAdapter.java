@@ -15,7 +15,6 @@ import java.util.Map;
 public class SignupApiAdapter extends ApiAdapter {
 
     private final SignupActivity signupActivity;
-    AppController appController = AppController.getInstance();
 
     public SignupApiAdapter(SignupActivity signupActivity) {
         super(signupActivity);
@@ -25,7 +24,7 @@ public class SignupApiAdapter extends ApiAdapter {
     @Override
     public void onResponse(ServiceResult serviceResult, Map<String, String> requestParams) {
         if (serviceResult.isSuccess()) {
-            appController.putPhoneInPreferences(requestParams.get("phoneNumber"));
+            getAppController().putPhoneInPreferences(requestParams.get("phoneNumber"));
             startSignupActivity(requestParams);
         } else {
             signupActivity.setTextToTvSignupMessage(serviceResult.getMessage());
@@ -33,30 +32,32 @@ public class SignupApiAdapter extends ApiAdapter {
     }
 
     void startSignupActivity(Map<String, String> requestParams) {
-        Intent intent = getIntent();
+        Intent intent = createIntent();
         intent.putExtra(SignupActivity.SIGNUP_PHONE, requestParams.get("phoneNumber"));
         signupActivity.startActivity(intent);
     }
 
     @NonNull
     @NotTestable
-    Intent getIntent() {
+    Intent createIntent() {
         return new Intent(signupActivity, LoginActivity.class);
+    }
+
+    @NonNull
+    @NotTestable
+    AppController getAppController() {
+        return AppController.getInstance();
     }
 
     @Override
     public void startLoading() {
-        signupActivity.getBnSignupButton().setEnabled(false);
+        signupActivity.disableSignUpButton();
         signupActivity.getProgressBar().setVisibility(View.VISIBLE);
     }
 
     @Override
     public void stopLoading() {
-        signupActivity.getBnSignupButton().setEnabled(true);
+        signupActivity.enableSignUpButton();
         signupActivity.getProgressBar().setVisibility(View.INVISIBLE);
-    }
-
-    void setAppController(AppController appController) {
-        this.appController = appController;
     }
 }

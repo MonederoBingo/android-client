@@ -37,8 +37,12 @@ public class SignupActivity extends Activity {
         return progressBar;
     }
 
-    public Button getBnSignupButton() {
-        return bnSignupButton;
+    public void enableSignUpButton() {
+        bnSignupButton.setEnabled(true);
+    }
+
+    public void disableSignUpButton() {
+        bnSignupButton.setEnabled(false);
     }
 
     public void setTextToTvSignupMessage(String message) {
