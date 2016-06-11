@@ -2,7 +2,6 @@ package com.monederobingo.activities.signup;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.view.View;
 
 import com.monederobingo.activities.login.LoginActivity;
 import com.monederobingo.app.AppController;
@@ -52,12 +51,12 @@ public class SignupApiAdapter extends ApiAdapter {
     @Override
     public void startLoading() {
         signupActivity.disableSignUpButton();
-        signupActivity.getProgressBar().setVisibility(View.VISIBLE);
+        signupActivity.setProgressBarVisible();
     }
 
     @Override
     public void stopLoading() {
         signupActivity.enableSignUpButton();
-        signupActivity.getProgressBar().setVisibility(View.INVISIBLE);
+        signupActivity.setProgressBarInvisible();
     }
 }

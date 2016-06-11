@@ -33,8 +33,12 @@ public class SignupActivity extends Activity {
         initializeViews();
     }
 
-    public ProgressBar getProgressBar() {
-        return progressBar;
+    public void setProgressBarVisible() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    public void setProgressBarInvisible() {
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     public void enableSignUpButton() {

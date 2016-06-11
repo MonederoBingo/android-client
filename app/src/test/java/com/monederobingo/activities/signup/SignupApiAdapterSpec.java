@@ -6,9 +6,7 @@ import com.monederobingo.app.AppController;
 import com.monederobingo.model.ServiceResult;
 
 import org.junit.Before;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Map;
 
@@ -40,8 +38,8 @@ public class SignupApiAdapterSpec {
         verify(signupApiAdapter).createIntent();
     }
 
-    protected void shouldPutExtra(String phoneNumber) {
-        verify(intent).putExtra(SignupActivity.SIGNUP_PHONE, phoneNumber);
+    protected void shouldPutExtra(String key, String phoneNumber) {
+        verify(intent).putExtra(key, phoneNumber);
     }
 
     protected void shouldStartActivity() {
@@ -70,5 +68,21 @@ public class SignupApiAdapterSpec {
 
     protected void shouldNotPutPhoneInPreferences(String phoneNumber) {
         verify(appController, never()).putPhoneInPreferences(phoneNumber);
+    }
+
+    protected void shouldEnableSignUpButton() {
+        verify(signupActivity).enableSignUpButton();
+    }
+
+    protected void shouldDisableSignUpButton() {
+        verify(signupActivity).disableSignUpButton();
+    }
+
+    protected void shouldSetProgressBarVisible() {
+        verify(signupActivity).setProgressBarVisible();
+    }
+
+    protected void shouldSetProgressBarInvisible() {
+        verify(signupActivity).setProgressBarInvisible();
     }
 }
