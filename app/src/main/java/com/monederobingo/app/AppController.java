@@ -72,9 +72,13 @@ public class AppController extends Application {
     }
 
     public <T> void addToRequestQueue(Request<T> req, Object tag) {
-        req.setTag(tag == null ? TAG : tag);
+        req.setTag(getNonNullTag(tag));
         req.setRetryPolicy(getRetryPolicy());
         getRequestQueue().add(req);
+    }
+
+    Object getNonNullTag(Object tag) {
+        return tag == null ? TAG : tag;
     }
 
     @NonNull

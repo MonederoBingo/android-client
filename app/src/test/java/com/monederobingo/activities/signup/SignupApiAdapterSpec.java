@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import java.util.Map;
 
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
@@ -30,8 +31,8 @@ public class SignupApiAdapterSpec {
     @Before
     public void baseSetUp() {
         signupApiAdapter = spy(new SignupApiAdapter(signupActivity));
-        given(signupApiAdapter.createIntent()).willReturn(intent);
-        given(signupApiAdapter.getAppController()).willReturn(appController);
+        doReturn(intent).when(signupApiAdapter).createIntent();
+        doReturn(appController).when(signupApiAdapter).getAppController();
     }
 
     protected void shouldCallCreateIntent() {
