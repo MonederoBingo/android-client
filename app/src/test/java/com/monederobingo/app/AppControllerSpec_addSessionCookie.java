@@ -9,12 +9,12 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.mockito.Mockito.doReturn;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AppControllerTest_addSessionCookie extends AppControllerSpec {
+public class AppControllerSpec_addSessionCookie extends AppControllerSpec {
 
     @Test
     public void givenJSessionIdIsInPreferences() {
         //given
-        doReturn(true).when(appController).isJSessionIdIsInPreferences();
+        doReturn(true).when(appController).isJSessionIdInPreferences();
         doReturn("JSESSIONID=1234").when(appController).getSessionIdCookieString();
         doReturn(";cookie").when(appController).getCookieString(headers);
         //when
@@ -28,7 +28,7 @@ public class AppControllerTest_addSessionCookie extends AppControllerSpec {
     @Test
     public void givenJSessionIdIsNotInPreferences() {
         //given
-        doReturn(false).when(appController).isJSessionIdIsInPreferences();
+        doReturn(false).when(appController).isJSessionIdInPreferences();
         doReturn("JSESSIONID=1234").when(appController).getSessionIdCookieString();
         doReturn(";cookie").when(appController).getCookieString(headers);
         //when

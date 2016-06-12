@@ -108,13 +108,13 @@ public class AppController extends Application {
     }
 
     public void addSessionCookie(Map<String, String> headers) {
-        if (isJSessionIdIsInPreferences()) {
+        if (isJSessionIdInPreferences()) {
             String cookie = getSessionIdCookieString() + getCookieString(headers);
             headers.put(Constants.Web.COOKIE_KEY, cookie);
         }
     }
 
-    boolean isJSessionIdIsInPreferences() {
+    boolean isJSessionIdInPreferences() {
         return getDefaultSharedPreferences().getString(Constants.Web.JSESSIONID, "").length() > 0;
     }
 
