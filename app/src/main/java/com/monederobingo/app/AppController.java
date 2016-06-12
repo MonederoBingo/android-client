@@ -20,7 +20,6 @@ public class AppController extends Application {
     private static AppController instance;
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
-    private SharedPreferences preferences;
 
     public static synchronized AppController getInstance() {
         return instance;
@@ -30,7 +29,6 @@ public class AppController extends Application {
     public void onCreate() {
         callOnCreateInSuper();
         instance = this;
-        preferences = getDefaultSharedPreferences();
     }
 
     @NotTestable
@@ -96,32 +94,41 @@ public class AppController extends Application {
 
     public void checkSessionCookie(Map<String, String> headers) {
         if (headers.containsKey(Constants.Web.SET_COOKIE_KEY)
-                && headers.get(Constants.Web.SET_COOKIE_KEY).startsWith(Constants.Web.SESSION_COOKIE)) {
+                && headers.get(Constants.Web.SET_COOKIE_KEY).startsWith(Constants.Web.JSESSIONID)) {
             String cookie = headers.get(Constants.Web.SET_COOKIE_KEY);
             if (cookie.length() > 0) {
                 String[] splitCookie = cookie.split(";");
                 String[] splitSessionId = splitCookie[0].split("=");
                 cookie = splitSessionId[1];
-                SharedPreferences.Editor prefEditor = preferences.edit();
-                prefEditor.putString(Constants.Web.SESSION_COOKIE, cookie);
+                SharedPreferences.Editor prefEditor = getDefaultSharedPreferences().edit();
+                prefEditor.putString(Constants.Web.JSESSIONID, cookie);
                 prefEditor.apply();
             }
         }
     }
 
     public void addSessionCookie(Map<String, String> headers) {
-        String sessionId = preferences.getString(Constants.Web.SESSION_COOKIE, "");
-        if (sessionId.length() > 0) {
-            StringBuilder builder = new StringBuilder();
-            builder.append(Constants.Web.SESSION_COOKIE);
-            builder.append("=");
-            builder.append(sessionId);
-            if (headers.containsKey(Constants.Web.COOKIE_KEY)) {
-                builder.append("; ");
-                builder.append(headers.get(Constants.Web.COOKIE_KEY));
-            }
-            headers.put(Constants.Web.COOKIE_KEY, builder.toString());
+        if (isJSessionIdIsInPreferences()) {
+            String cookie = getSessionIdCookieString() + getCookieString(headers);
+            headers.put(Constants.Web.COOKIE_KEY, cookie);
         }
+    }
+
+    boolean isJSessionIdIsInPreferences() {
+        return getDefaultSharedPreferences().getString(Constants.Web.JSESSIONID, "").length() > 0;
+    }
+
+    @NonNull
+    String getSessionIdCookieString() {
+        return Constants.Web.JSESSIONID + "=" + getDefaultSharedPreferences().getString(Constants.Web.JSESSIONID, "");
+    }
+
+    String getCookieString(Map<String, String> headers) {
+        String cookieString = "";
+        if (headers.containsKey(Constants.Web.COOKIE_KEY)) {
+            cookieString =  "; " + headers.get(Constants.Web.COOKIE_KEY);
+        }
+        return cookieString;
     }
 
     public void putSmsKeyInPreferences(String value) {
@@ -161,18 +168,18 @@ public class AppController extends Application {
     }
 
     private void putInPreferences(String key, String value) {
-        SharedPreferences.Editor prefEditor = preferences.edit();
+        SharedPreferences.Editor prefEditor = getDefaultSharedPreferences().edit();
         prefEditor.putString(key, value);
         prefEditor.apply();
     }
 
     private void removeFromPreferences(String key) {
-        SharedPreferences.Editor prefEditor = preferences.edit();
+        SharedPreferences.Editor prefEditor = getDefaultSharedPreferences().edit();
         prefEditor.remove(key);
         prefEditor.apply();
     }
 
     private String getFromPreferences(String key) {
-        return preferences.getString(key, "");
+        return getDefaultSharedPreferences().getString(key, "");
     }
 }

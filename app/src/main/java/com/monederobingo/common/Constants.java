@@ -10,7 +10,7 @@ public class Constants {
     public static class Web {
         public static final String IMAGE_URL = "company/logo/";
         public static final String SET_COOKIE_KEY = "Set-Cookie";
-        public static final String SESSION_COOKIE = "JSESSIONID";
+        public static final String JSESSIONID = "JSESSIONID";
         public static final String COOKIE_KEY = "Cookie";
     }
 }

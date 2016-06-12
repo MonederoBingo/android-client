@@ -18,7 +18,7 @@ public class ConstantsTest {
     public void verifyWebConstants() {
         assertEquals("company/logo/", Constants.Web.IMAGE_URL);
         assertEquals("Set-Cookie", Constants.Web.SET_COOKIE_KEY);
-        assertEquals("JSESSIONID", Constants.Web.SESSION_COOKIE);
+        assertEquals("JSESSIONID", Constants.Web.JSESSIONID);
         assertEquals("Cookie", Constants.Web.COOKIE_KEY);
     }
 }
