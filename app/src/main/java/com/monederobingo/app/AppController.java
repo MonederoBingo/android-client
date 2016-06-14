@@ -56,17 +56,16 @@ public class AppController extends Application {
     }
 
     public ImageLoader getImageLoader() {
-        getRequestQueue();
         if (imageLoader == null) {
             imageLoader = createImageLoader();
         }
-        return this.imageLoader;
+        return imageLoader;
     }
 
     @NonNull
     @NotTestable
     ImageLoader createImageLoader() {
-        return new ImageLoader(this.requestQueue, new LruBitmapCache());
+        return new ImageLoader(getRequestQueue(), new LruBitmapCache());
     }
 
     public <T> void addToRequestQueue(Request<T> req, Object tag) {
@@ -93,18 +92,22 @@ public class AppController extends Application {
     }
 
     public void checkSessionCookie(Map<String, String> headers) {
-        if (headers.containsKey(Constants.Web.SET_COOKIE_KEY)
-                && headers.get(Constants.Web.SET_COOKIE_KEY).startsWith(Constants.Web.JSESSIONID)) {
-            String cookie = headers.get(Constants.Web.SET_COOKIE_KEY);
-            if (cookie.length() > 0) {
-                String[] splitCookie = cookie.split(";");
-                String[] splitSessionId = splitCookie[0].split("=");
-                cookie = splitSessionId[1];
-                SharedPreferences.Editor prefEditor = getDefaultSharedPreferences().edit();
-                prefEditor.putString(Constants.Web.JSESSIONID, cookie);
-                prefEditor.apply();
-            }
+        if (shouldSetSessionCookie(headers)) {
+            String cookie = getCookieFromHeaders(headers);
+            putInPreferences(Constants.Web.JSESSIONID, cookie);
         }
+    }
+
+    private boolean shouldSetSessionCookie(Map<String, String> headers) {
+        return headers.containsKey(Constants.Web.SET_COOKIE_KEY)
+                && headers.get(Constants.Web.SET_COOKIE_KEY).length() > 0
+                && headers.get(Constants.Web.SET_COOKIE_KEY).startsWith(Constants.Web.JSESSIONID);
+    }
+
+    private String getCookieFromHeaders(Map<String, String> headers) {
+        String[] splitCookie = headers.get(Constants.Web.SET_COOKIE_KEY).split(";");
+        String[] splitSessionId = splitCookie[0].split("=");
+        return splitSessionId[1];
     }
 
     public void addSessionCookie(Map<String, String> headers) {
@@ -126,7 +129,7 @@ public class AppController extends Application {
     String getCookieString(Map<String, String> headers) {
         String cookieString = "";
         if (headers.containsKey(Constants.Web.COOKIE_KEY)) {
-            cookieString =  "; " + headers.get(Constants.Web.COOKIE_KEY);
+            cookieString = "; " + headers.get(Constants.Web.COOKIE_KEY);
         }
         return cookieString;
     }

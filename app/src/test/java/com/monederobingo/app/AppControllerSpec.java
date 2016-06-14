@@ -5,12 +5,15 @@ import android.content.SharedPreferences;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
 
 import org.junit.Before;
 import org.mockito.Mock;
 
+import java.lang.reflect.Field;
 import java.util.Map;
 
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.never;
@@ -32,6 +35,8 @@ public class AppControllerSpec {
     protected Map<String, String> headers;
     @Mock
     protected SharedPreferences preferences;
+    @Mock
+    protected ImageLoader imageLoader;
 
     @Before
     public void baseSetUp() throws Exception {
@@ -86,5 +91,43 @@ public class AppControllerSpec {
 
     protected void shouldNotPutCookieOnHeaders(String key, String value) {
         verify(headers, never()).put(key, value);
+    }
+
+    protected void shouldCallOnCreateInSuper() {
+        verify(appController).callOnCreateInSuper();
+    }
+
+    protected void instanceShouldNotBeNull() throws NoSuchFieldException, IllegalAccessException {
+        Field field = AppController.class.getDeclaredField("instance");
+        field.setAccessible(true);
+        assertNotNull(field.get(appController));
+    }
+
+    protected Field getImageLoaderField() throws NoSuchFieldException, IllegalAccessException {
+        Field field = AppController.class.getDeclaredField("imageLoader");
+        field.setAccessible(true);
+        return field;
+    }
+
+    protected void shouldCallCreateImageLoader() {
+        verify(appController).createImageLoader();
+    }
+
+    protected void shouldNotCallCreateImageLoader() {
+        verify(appController, never()).createImageLoader();
+    }
+
+    protected Field getRequestQueueField() throws NoSuchFieldException, IllegalAccessException {
+        Field field = AppController.class.getDeclaredField("requestQueue");
+        field.setAccessible(true);
+        return field;
+    }
+
+    protected void shouldCallCancelAllOnRequestQueue() {
+        verify(requestQueue).cancelAll(tag);
+    }
+
+    protected void shouldNotCallCancelAllOnRequestQueue() {
+        verify(requestQueue, never()).cancelAll(tag);
     }
 }
