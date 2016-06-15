@@ -98,13 +98,13 @@ public class AppController extends Application {
         }
     }
 
-    private boolean shouldSetSessionCookie(Map<String, String> headers) {
+    boolean shouldSetSessionCookie(Map<String, String> headers) {
         return headers.containsKey(Constants.Web.SET_COOKIE_KEY)
                 && headers.get(Constants.Web.SET_COOKIE_KEY).length() > 0
                 && headers.get(Constants.Web.SET_COOKIE_KEY).startsWith(Constants.Web.JSESSIONID);
     }
 
-    private String getCookieFromHeaders(Map<String, String> headers) {
+    String getCookieFromHeaders(Map<String, String> headers) {
         String[] splitCookie = headers.get(Constants.Web.SET_COOKIE_KEY).split(";");
         String[] splitSessionId = splitCookie[0].split("=");
         return splitSessionId[1];

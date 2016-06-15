@@ -4,13 +4,13 @@ import com.android.volley.toolbox.ImageLoader;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.lang.reflect.Field;
 
+import static com.monederobingo.TestVerifiers.call;
+import static com.monederobingo.TestVerifiers.neverCall;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -25,7 +25,7 @@ public class AppControllerSpec_getImageLoader extends AppControllerSpec {
         //when
         ImageLoader actualImageLoader = appController.getImageLoader();
         //then
-        shouldCallCreateImageLoader();
+        call(appController).createImageLoader();
         assertEquals(imageLoader, actualImageLoader);
     }
 
@@ -37,7 +37,7 @@ public class AppControllerSpec_getImageLoader extends AppControllerSpec {
         //when
         ImageLoader actualImageLoader = appController.getImageLoader();
         //then
-        shouldNotCallCreateImageLoader();
+        neverCall(appController).createImageLoader();
         assertEquals(imageLoaderField.get(appController), actualImageLoader);
     }
 }

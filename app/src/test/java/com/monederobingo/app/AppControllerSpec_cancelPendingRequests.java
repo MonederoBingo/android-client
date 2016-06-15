@@ -5,6 +5,8 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.lang.reflect.Field;
+import static com.monederobingo.TestVerifiers.call;
+import static com.monederobingo.TestVerifiers.neverCall;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AppControllerSpec_cancelPendingRequests extends AppControllerSpec {
@@ -17,7 +19,7 @@ public class AppControllerSpec_cancelPendingRequests extends AppControllerSpec {
         //when
         appController.cancelPendingRequests(tag);
         //then
-        shouldNotCallCancelAllOnRequestQueue();
+        neverCall(requestQueue).cancelAll(tag);
     }
 
     @Test
@@ -28,6 +30,6 @@ public class AppControllerSpec_cancelPendingRequests extends AppControllerSpec {
         //when
         appController.cancelPendingRequests(tag);
         //then
-        shouldCallCancelAllOnRequestQueue();
+        call(requestQueue).cancelAll(tag);
     }
 }

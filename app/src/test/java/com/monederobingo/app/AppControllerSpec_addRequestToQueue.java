@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static com.monederobingo.TestVerifiers.call;
+
 @RunWith(MockitoJUnitRunner.class)
 public class AppControllerSpec_addRequestToQueue extends AppControllerSpec {
 
@@ -12,11 +14,11 @@ public class AppControllerSpec_addRequestToQueue extends AppControllerSpec {
         //when
         appController.addToRequestQueue(request, tag);
         //then
-        shouldCallGetNonNullTag();
-        shouldCallSetTagOnRequestParameter();
-        shouldCallGetRetryPolicy();
-        shouldCallSetRetryPolicyOnRequestParameter();
-        shouldCallGetRequestQueue();
-        shouldCallAddOnRequestQueue();
+        call(appController).getNonNullTag(tag);
+        call(request).setTag(tag);
+        call(appController).getRetryPolicy();
+        call(request).setRetryPolicy(retryPolicy);
+        call(appController).getRequestQueue();
+        call(requestQueue).add(request);
     }
 }

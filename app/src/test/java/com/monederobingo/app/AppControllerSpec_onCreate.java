@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static com.monederobingo.TestVerifiers.call;
 import static org.mockito.Mockito.doNothing;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -16,7 +17,7 @@ public class AppControllerSpec_onCreate extends AppControllerSpec {
         //when
         appController.onCreate();
         //then
-        shouldCallOnCreateInSuper();
+        call(appController).callOnCreateInSuper();
         instanceShouldNotBeNull();
     }
 }

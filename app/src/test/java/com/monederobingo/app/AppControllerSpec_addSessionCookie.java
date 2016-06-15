@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static com.monederobingo.TestVerifiers.call;
+import static com.monederobingo.TestVerifiers.neverCall;
 import static org.mockito.Mockito.doReturn;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -20,9 +22,9 @@ public class AppControllerSpec_addSessionCookie extends AppControllerSpec {
         //when
         appController.addSessionCookie(headers);
         //then
-        shouldCallGetSessionIdCookieString();
-        shouldCallGetCookieString();
-        shouldPutCookieOnHeaders(Constants.Web.COOKIE_KEY, "JSESSIONID=1234;cookie");
+        call(appController).getSessionIdCookieString();
+        call(appController).getCookieString(headers);
+        call(headers).put(Constants.Web.COOKIE_KEY, "JSESSIONID=1234;cookie");
     }
 
     @Test
@@ -34,8 +36,8 @@ public class AppControllerSpec_addSessionCookie extends AppControllerSpec {
         //when
         appController.addSessionCookie(headers);
         //then
-        shouldNotCallGetSessionIdCookieString();
-        shouldNotCallGetCookieString();
-        shouldNotPutCookieOnHeaders(Constants.Web.COOKIE_KEY, "JSESSIONID=1234;cookie");
+        neverCall(appController).getSessionIdCookieString();
+        neverCall(appController).getCookieString(headers);
+        neverCall(headers).put(Constants.Web.COOKIE_KEY, "JSESSIONID=1234;cookie");
     }
 }
