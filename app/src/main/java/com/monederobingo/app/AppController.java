@@ -170,7 +170,7 @@ public class AppController extends Application {
         return getFromPreferences(Constants.Preferences.USER_ID);
     }
 
-    private void putInPreferences(String key, String value) {
+    void putInPreferences(String key, String value) {
         SharedPreferences.Editor prefEditor = getDefaultSharedPreferences().edit();
         prefEditor.putString(key, value);
         prefEditor.apply();
