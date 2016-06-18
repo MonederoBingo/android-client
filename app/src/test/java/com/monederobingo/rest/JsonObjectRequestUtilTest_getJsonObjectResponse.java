@@ -38,7 +38,7 @@ public class JsonObjectRequestUtilTest_getJsonObjectResponse {
         jsonObjectRequestUtil.getJsonObjectResponse(networkResponse, jsonObjectRequest);
 
         //then
-        verify(appController).checkSessionCookie(Matchers.<Map<String, String>>any());
+        verify(appController).putSessionCookieInPreferences(Matchers.<Map<String, String>>any());
     }
 
     @Test

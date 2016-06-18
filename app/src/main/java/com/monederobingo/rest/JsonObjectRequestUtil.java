@@ -27,7 +27,7 @@ public class JsonObjectRequestUtil {
 
     Response<JSONObject> getJsonObjectResponse(NetworkResponse response,
                                                       CustomJsonObjectRequest jsonObjectRequest) {
-        appController.checkSessionCookie(response.headers);
+        appController.putSessionCookieInPreferences(response.headers);
         return jsonObjectRequest.customParseNetworkResponse(response);
     }
 

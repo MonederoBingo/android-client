@@ -91,7 +91,7 @@ public class AppController extends Application {
         }
     }
 
-    public void checkSessionCookie(Map<String, String> headers) {
+    public void putSessionCookieInPreferences(Map<String, String> headers) {
         if (shouldSetSessionCookie(headers)) {
             String cookie = getCookieFromHeaders(headers);
             putInPreferences(Constants.Web.JSESSIONID, cookie);
@@ -100,7 +100,7 @@ public class AppController extends Application {
 
     boolean shouldSetSessionCookie(Map<String, String> headers) {
         return headers.containsKey(Constants.Web.SET_COOKIE_KEY)
-                && headers.get(Constants.Web.SET_COOKIE_KEY).length() > 0
+                && headers.get(Constants.Web.SET_COOKIE_KEY) != null
                 && headers.get(Constants.Web.SET_COOKIE_KEY).startsWith(Constants.Web.JSESSIONID);
     }
 
