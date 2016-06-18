@@ -6,8 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.lang.reflect.Field;
-
+import static com.monederobingo.ClassMembersAccessor.getFieldValue;
+import static com.monederobingo.ClassMembersAccessor.setFieldValue;
 import static com.monederobingo.TestVerifiers.call;
 import static com.monederobingo.TestVerifiers.neverCall;
 import static org.junit.Assert.assertEquals;
@@ -19,8 +19,7 @@ public class AppControllerSpec_getImageLoader extends AppControllerSpec {
     @Test
     public void givenImageLoaderIsNull() throws NoSuchFieldException, IllegalAccessException {
         //given
-        Field imageLoaderField = getImageLoaderField();
-        imageLoaderField.set(appController, null);
+        setFieldValue(appController, "imageLoader", null);
         doReturn(imageLoader).when(appController).createImageLoader();
         //when
         ImageLoader actualImageLoader = appController.getImageLoader();
@@ -30,14 +29,13 @@ public class AppControllerSpec_getImageLoader extends AppControllerSpec {
     }
 
     @Test
-    public void givenImageLoaderIsNotNull() throws NoSuchFieldException, IllegalAccessException {
+    public void givenImageLoaderIsNotNull()  {
         //given
-        Field imageLoaderField = getImageLoaderField();
-        imageLoaderField.set(appController, imageLoader);
+        setFieldValue(appController, "imageLoader", imageLoader);
         //when
         ImageLoader actualImageLoader = appController.getImageLoader();
         //then
         neverCall(appController).createImageLoader();
-        assertEquals(imageLoaderField.get(appController), actualImageLoader);
+        assertEquals(getFieldValue(appController, "imageLoader"), actualImageLoader);
     }
 }

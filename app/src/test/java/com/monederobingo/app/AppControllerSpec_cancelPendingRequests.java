@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.lang.reflect.Field;
+import static com.monederobingo.ClassMembersAccessor.setFieldValue;
 import static com.monederobingo.TestVerifiers.call;
 import static com.monederobingo.TestVerifiers.neverCall;
 
@@ -14,8 +14,7 @@ public class AppControllerSpec_cancelPendingRequests extends AppControllerSpec {
     @Test
     public void givenRequestQueueIsNull() throws NoSuchFieldException, IllegalAccessException {
         //given
-        Field requestQueueField = getRequestQueueField();
-        requestQueueField.set(appController, null);
+        setFieldValue(appController, "requestQueue", null);
         //when
         appController.cancelPendingRequests(tag);
         //then
@@ -25,8 +24,7 @@ public class AppControllerSpec_cancelPendingRequests extends AppControllerSpec {
     @Test
     public void givenRequestQueueIsNotNull() throws NoSuchFieldException, IllegalAccessException {
         //given
-        Field requestQueueField = getRequestQueueField();
-        requestQueueField.set(appController, requestQueue);
+        setFieldValue(appController, "requestQueue", requestQueue);
         //when
         appController.cancelPendingRequests(tag);
         //then

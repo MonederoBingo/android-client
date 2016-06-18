@@ -44,22 +44,4 @@ public class AppControllerSpec {
         doReturn(requestQueue).when(appController).getRequestQueue();
         doReturn(retryPolicy).when(appController).getRetryPolicy();
     }
-
-    protected void instanceShouldNotBeNull() throws NoSuchFieldException, IllegalAccessException {
-        Field field = AppController.class.getDeclaredField("instance");
-        field.setAccessible(true);
-        assertNotNull(field.get(appController));
-    }
-
-    protected Field getImageLoaderField() throws NoSuchFieldException, IllegalAccessException {
-        Field field = AppController.class.getDeclaredField("imageLoader");
-        field.setAccessible(true);
-        return field;
-    }
-
-    protected Field getRequestQueueField() throws NoSuchFieldException, IllegalAccessException {
-        Field field = AppController.class.getDeclaredField("requestQueue");
-        field.setAccessible(true);
-        return field;
-    }
 }
