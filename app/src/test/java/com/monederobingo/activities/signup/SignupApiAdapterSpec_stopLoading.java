@@ -15,5 +15,4 @@ public class SignupApiAdapterSpec_stopLoading extends SignupApiAdapterSpec {
         shouldEnableSignUpButton();
         shouldSetProgressBarInvisible();
     }
-
 }

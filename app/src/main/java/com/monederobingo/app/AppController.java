@@ -13,6 +13,10 @@ import com.android.volley.toolbox.Volley;
 import com.monederobingo.common.Constants;
 import com.monederobingo.util.LruBitmapCache;
 
+import org.apache.commons.collections4.MapUtils;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 public class AppController extends Application {
@@ -105,9 +109,14 @@ public class AppController extends Application {
     }
 
     String getCookieFromHeaders(Map<String, String> headers) {
-        String[] splitCookie = headers.get(Constants.Web.SET_COOKIE_KEY).split(";");
-        String[] splitSessionId = splitCookie[0].split("=");
-        return splitSessionId[1];
+        List<String> cookieEntry = getCookieEntry(headers);
+        return cookieEntry.size() > 1 ? cookieEntry.get(1) : "";
+    }
+
+    @NonNull
+    List<String> getCookieEntry(Map<String, String> headers) {
+        String[] split = MapUtils.getString(headers, Constants.Web.SET_COOKIE_KEY, "").split(";")[0].split("=");
+        return Arrays.asList(split);
     }
 
     public void addSessionCookie(Map<String, String> headers) {

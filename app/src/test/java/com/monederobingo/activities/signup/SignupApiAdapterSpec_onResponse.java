@@ -44,5 +44,4 @@ public class SignupApiAdapterSpec_onResponse extends SignupApiAdapterSpec {
         shouldNotStartSignupActivity(requestParams);
         shouldSetTextToTvSignupMessage("message");
     }
-
 }
