@@ -38,7 +38,7 @@ public class AppControllerSpec_getCookieEntry extends AppControllerSpec {
     }
 
     @Parameterized.Parameters
-    public static Collection headerFixtures() {
+    public static Collection testFixtures() {
         return Arrays.asList(
                 new Object[]{singletonMap("Set-Cookie", "cookie=1234;foe"), Arrays.asList("cookie", "1234")},
                 new Object[]{singletonMap("Set-Cookie", "cookie=1234"), Arrays.asList("cookie", "1234")},

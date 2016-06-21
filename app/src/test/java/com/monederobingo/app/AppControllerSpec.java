@@ -6,20 +6,19 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
+import com.monederobingo.util.MapUtilsWrapper;
 
 import org.junit.Before;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import java.lang.reflect.Field;
 import java.util.Map;
 
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
 
+@RunWith(MockitoJUnitRunner.class)
 public class AppControllerSpec {
 
     protected AppController appController;
@@ -37,6 +36,8 @@ public class AppControllerSpec {
     protected SharedPreferences preferences;
     @Mock
     protected ImageLoader imageLoader;
+    @Mock
+    protected MapUtilsWrapper mapUtilsWrapper;
 
     @Before
     public void baseSetUp() throws Exception {

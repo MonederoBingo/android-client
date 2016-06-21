@@ -12,8 +12,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.monederobingo.common.Constants;
 import com.monederobingo.util.LruBitmapCache;
-
-import org.apache.commons.collections4.MapUtils;
+import com.monederobingo.util.MapUtilsWrapper;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,6 +23,7 @@ public class AppController extends Application {
     private static AppController instance;
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
+    private MapUtilsWrapper mapUtilsWrapper = new MapUtilsWrapper();
 
     public static synchronized AppController getInstance() {
         return instance;
@@ -115,7 +115,7 @@ public class AppController extends Application {
 
     @NonNull
     List<String> getCookieEntry(Map<String, String> headers) {
-        String[] split = MapUtils.getString(headers, Constants.Web.SET_COOKIE_KEY, "").split(";")[0].split("=");
+        String[] split = mapUtilsWrapper.getString(headers, Constants.Web.SET_COOKIE_KEY, "").split(";")[0].split("=");
         return Arrays.asList(split);
     }
 
@@ -136,11 +136,7 @@ public class AppController extends Application {
     }
 
     String getCookieString(Map<String, String> headers) {
-        String cookieString = "";
-        if (headers.containsKey(Constants.Web.COOKIE_KEY)) {
-            cookieString = "; " + headers.get(Constants.Web.COOKIE_KEY);
-        }
-        return cookieString;
+        return mapUtilsWrapper.getString(headers, Constants.Web.COOKIE_KEY, "");
     }
 
     public void putSmsKeyInPreferences(String value) {
