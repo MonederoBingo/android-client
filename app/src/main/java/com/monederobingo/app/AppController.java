@@ -181,13 +181,13 @@ public class AppController extends Application {
         prefEditor.apply();
     }
 
-    private void removeFromPreferences(String key) {
+    void removeFromPreferences(String key) {
         SharedPreferences.Editor prefEditor = getDefaultSharedPreferences().edit();
         prefEditor.remove(key);
         prefEditor.apply();
     }
 
-    private String getFromPreferences(String key) {
+    String getFromPreferences(String key) {
         return getDefaultSharedPreferences().getString(key, "");
     }
 }

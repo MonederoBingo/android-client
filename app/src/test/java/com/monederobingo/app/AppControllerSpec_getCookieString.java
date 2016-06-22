@@ -14,6 +14,17 @@ public class AppControllerSpec_getCookieString extends AppControllerSpec {
     public void givenHeadersContainsCookieKey() {
         //given
         setFieldValue(appController, "mapUtilsWrapper", mapUtilsWrapper);
+        doReturn(Constants.Web.COOKIE_KEY).when(mapUtilsWrapper).getString(headers, Constants.Web.COOKIE_KEY, "");
+        //when
+        String cookieString = appController.getCookieString(headers);
+        //then
+        assertEquals(Constants.Web.COOKIE_KEY, cookieString);
+    }
+
+    @Test
+    public void givenHeadersDesNotContainCookieKey() {
+        //given
+        setFieldValue(appController, "mapUtilsWrapper", mapUtilsWrapper);
         doReturn("").when(mapUtilsWrapper).getString(headers, Constants.Web.COOKIE_KEY, "");
         //when
         String cookieString = appController.getCookieString(headers);
